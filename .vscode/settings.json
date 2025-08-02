@@ -1,0 +1,19 @@
+{
+  // Astroの設定
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  // ESLintの設定
+  "eslint.validate": [
+    "javascript", // Enable .js
+    "javascriptreact", // Enable .jsx
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ],
+  // Code Spell Checkerの設定
+  "cSpell.words": ["natsuiro"]
+}

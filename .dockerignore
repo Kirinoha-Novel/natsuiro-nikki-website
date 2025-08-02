@@ -1,0 +1,15 @@
+.astro
+.direnv
+.husky
+.vscode
+.DS_Store
+dist
+node_modules
+.dockerignore
+.envrc
+.gitignore
+COPYING
+Dockerfile
+flake.lock
+flake.nix
+README.md
