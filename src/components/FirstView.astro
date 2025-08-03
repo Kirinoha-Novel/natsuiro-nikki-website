@@ -1,0 +1,44 @@
+---
+import { Picture } from 'astro:assets';
+import keyVisualImage from '../assets/key-visual.png';
+---
+
+<div id="flex-box">
+  <div id="text-item" class="item">
+    <div>
+      <h1 class="slogan">堕落した大学生と</h1>
+      <h1 class="slogan">世話好き天使の</h1>
+      <h1 class="slogan">甘くて切ない物語</h1>
+    </div>
+  </div>
+  <div id="image-item" class="item">
+    <Picture src={keyVisualImage} formats={['avif', 'webp']} alt="Key Visual" layout="constrained" id="key-visual" />
+  </div>
+</div>
+
+<style>
+  #flex-box {
+    width: 100%;
+    margin: 200px 0 0 0;
+    display: flex;
+    flex-basis: 50%;
+  }
+
+  #text-item {
+    writing-mode: vertical-rl;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin: 50px 0 0 0;
+  }
+
+  #text-item .slogan {
+    font-size: 3rem;
+    color: #333;
+  }
+
+  #image-item {
+    padding: 0px 100px;
+    flex: 2;
+  }
+</style>
