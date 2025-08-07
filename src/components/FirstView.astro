@@ -1,43 +1,47 @@
 ---
 import { Picture } from 'astro:assets';
-import keyVisualImage from '../assets/key-visual.png';
+import mobileImage from '../assets/mobile.png';
+import pcImage from '../assets/pc.png';
 ---
 
-<div id="flex-box">
-  <div id="text-item" class="item">
-    <div>
-      <h1 class="slogan">堕落した大学生と</h1>
-      <h1 class="slogan">世話好き天使の</h1>
-      <h1 class="slogan">甘くて切ない物語</h1>
-    </div>
-  </div>
-  <div id="image-item" class="item">
-    <Picture src={keyVisualImage} formats={['avif', 'webp']} alt="Key Visual" layout="constrained" id="key-visual" />
-  </div>
+<div id="key-visual-container">
+  <Picture
+    src={pcImage}
+    id="key-visual-pc"
+    formats={['webp', 'avif']}
+    alt="Key Visual"
+    layout="full-width"
+    width={pcImage.width}
+    height={pcImage.height}
+    priority
+  />
+  <Picture
+    src={mobileImage}
+    id="key-visual-mobile"
+    formats={['webp', 'avif']}
+    alt="Key Visual"
+    layout="full-width"
+    width={mobileImage.width}
+    height={mobileImage.height}
+    priority
+  />
 </div>
 
 <style>
-  #flex-box {
-    width: 100%;
+  #key-visual-container {
+    height: 100lvh;
     display: flex;
-    flex-basis: 50%;
+    align-items: flex-start;
+    overflow: hidden;
   }
-
-  #text-item {
-    writing-mode: vertical-rl;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    margin: 50px 0 0 0;
+  @media screen and (max-width: 935px) {
+    #key-visual-pc {
+      display: none;
+    }
   }
-
-  #text-item .slogan {
-    font-size: 3rem;
-    color: #333;
-  }
-
-  #image-item {
-    padding: 0px 100px;
-    flex: 2;
+  @media screen and (min-width: 936px) {
+    #key-visual-mobile {
+      display: none;
+    }
   }
 </style>
