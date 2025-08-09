@@ -32,6 +32,19 @@ const Loading = () => {
         setShowText(false);
       }, 980);
 
+      // // show loading for 1.3 seconds
+      // setTimeout(() => {
+      //   setShowLoading(false);
+      // }, 13000);
+      // // start fade out after 1 second
+      // setTimeout(() => {
+      //   setFadeOut(true);
+      // }, 10000);
+      // // hide text after 0.98 seconds
+      // setTimeout(() => {
+      //   setShowText(false);
+      // }, 9800);
+
       // tmp
       Cookies.remove('visited', { path: '/' });
     }
@@ -41,7 +54,7 @@ const Loading = () => {
     <>
       {showLoading && (
         <div className={`${styles.overlay} ${fadeOut ? styles.fadeOut : ''}`}>
-          {showText && <h1>少女と過ごす、少し不思議な夏休み</h1>}
+          {showText && <h1 className={styles.title}>少女と過ごす、少し不思議な夏休み</h1>}
         </div>
       )}
     </>

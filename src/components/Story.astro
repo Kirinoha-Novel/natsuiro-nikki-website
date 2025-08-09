@@ -1,25 +1,41 @@
+---
+import Title from '../components/utils/Title.astro';
+---
+
 <section>
-  <div id="grid-paper">
+  <Title title="【あらすじ】" />
+  <div class="grid-paper">
     <p>
-      大学生の千ヶ崎蓮は、堕落した生活を送っていた。<br />ある夏の朝、彼は突如として謎の少女に起こされる。
+      千ヶ崎蓮は、堕落した大学生活を送っていた。<br />
+      ある夏の朝、天使・ステラが現れる。<br />
+      彼女は毎朝、蓮を起こしにやって来る。<br />
+      繰り返される朝の訪れの中で、<br />
+      少しずつ変わっていく生活と、ふたりの距離。<br />
+      やがて迎える別れのとき――<br />
+      <span class="finish">その選択が、結末を大きく変えていく。</span><br />
     </p>
   </div>
 </section>
 
 <style>
-  :root {
-    --line-color: #e0d9c4;
-  }
-  #grid-paper {
-    height: 700px;
+  .grid-paper {
+    height: 650px;
     background-image:
       linear-gradient(var(--line-color) 1px, transparent 1px),
       linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
     background-size: 2.2rem 2.2rem;
     background-position: center top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   p {
     writing-mode: vertical-rl;
-    font-size: 1.2rem;
+    line-height: 2.5;
+    font-size: var(--p-font-size);
+    color: var(--note-color);
+  }
+  .finish {
+    font-size: 1.9rem;
   }
 </style>

@@ -4,44 +4,83 @@ import mobileImage from '../assets/mobile.png';
 import pcImage from '../assets/pc.png';
 ---
 
-<div id="key-visual-container">
-  <Picture
-    src={pcImage}
-    id="key-visual-pc"
-    formats={['webp', 'avif']}
-    alt="Key Visual"
-    layout="full-width"
-    width={pcImage.width}
-    height={pcImage.height}
-    priority
-  />
-  <Picture
-    src={mobileImage}
-    id="key-visual-mobile"
-    formats={['webp', 'avif']}
-    alt="Key Visual"
-    layout="full-width"
-    width={mobileImage.width}
-    height={mobileImage.height}
-    priority
-  />
+<div class="first-view-container">
+  <div class="key-visual-container">
+    <div class="key-visual-pc">
+      <Picture
+        src={pcImage}
+        formats={['webp', 'avif']}
+        alt="Key Visual"
+        layout="full-width"
+        width={pcImage.width}
+        height={pcImage.height}
+        priority
+      />
+      <div class="caption">
+        <h1 class="title">なついろにっき。</h1>
+        <p>2025年8月8日 発売予定</p>
+      </div>
+    </div>
+    <div class="key-visual-mobile">
+      <Picture
+        src={mobileImage}
+        class="key-visual-mobile"
+        formats={['webp', 'avif']}
+        alt="Key Visual"
+        layout="full-width"
+        width={mobileImage.width}
+        height={mobileImage.height}
+        priority
+      />
+    </div>
+  </div>
+  <div class="blur-box"></div>
 </div>
 
 <style>
-  #key-visual-container {
+  .key-visual-container {
     height: 100lvh;
     display: flex;
     align-items: flex-start;
     overflow: hidden;
   }
+
+  .key-visual-pc .caption {
+    position: absolute;
+    bottom: 200px;
+    left: 100px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+  }
+
+  .key-visual-pc .caption .title {
+    font-size: 4vw;
+    font-weight: bold;
+  }
+  .key-visual-pc .caption p {
+    font-size: 2vw;
+    font-weight: bold;
+  }
+
   @media screen and (max-width: 935px) {
-    #key-visual-pc {
+    .key-visual-pc {
       display: none;
     }
   }
   @media screen and (min-width: 936px) {
-    #key-visual-mobile {
+    .key-visual-mobile {
       display: none;
     }
+  }
+
+  .blur-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(255, 251, 242, 0) 0%, rgba(255, 251, 242, 1) 100%);
+    z-index: 1;
   }
 </style>

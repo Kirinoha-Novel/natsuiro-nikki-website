@@ -1,0 +1,35 @@
+---
+import Title from '../components/utils/Title.astro';
+import Li from '../components/utils/NewsLi.astro';
+---
+
+<section>
+  <Title title="【お知らせ】" />
+  <div class="grid-paper">
+    <ul>
+      <Li url="https://natsuiro-teaser.com/news/2024-01-01/" title="20**年△月□日　ティザーサイト公開" />
+      <Li url="https://natsuiro-teaser.com/news/2024-01-02/" title="20**年○月◆日　公式Twitter開設" />
+      <Li url="https://natsuiro-teaser.com/news/2024-01-03/" title="20**年▽月□日　公式YouTubeチャンネル開設" />
+    </ul>
+  </div>
+</section>
+
+<style>
+  .grid-paper {
+    padding: 30px 0;
+    background-image:
+      linear-gradient(var(--line-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
+    background-size: 2.2rem 2.2rem;
+    background-position: center top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ul {
+    margin: 0 auto;
+    list-style: none;
+    line-height: 2.5;
+    width: fit-content;
+  }
+</style>
