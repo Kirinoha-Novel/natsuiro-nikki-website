@@ -10,6 +10,8 @@ const Loading = () => {
   useEffect(() => {
     const isVisited = Cookies.get('visited');
 
+    const time = 2000;
+
     if (!isVisited) {
       // show loading screen
       setShowLoading(true);
@@ -19,31 +21,18 @@ const Loading = () => {
       // set a cookie to indicate the user has visited
       Cookies.set('visited', 'true', { expires: 1, path: '/' });
 
-      // show loading for 1.3 seconds
+      // show loading for 2 seconds
       setTimeout(() => {
         setShowLoading(false);
-      }, 1300);
-      // start fade out after 1 second
+      }, time);
+      // start fade out after 1.8 second
       setTimeout(() => {
         setFadeOut(true);
-      }, 1000);
-      // hide text after 0.98 seconds
+      }, time - 200);
+      // hide text after 1.78 seconds
       setTimeout(() => {
         setShowText(false);
-      }, 980);
-
-      // // show loading for 1.3 seconds
-      // setTimeout(() => {
-      //   setShowLoading(false);
-      // }, 13000);
-      // // start fade out after 1 second
-      // setTimeout(() => {
-      //   setFadeOut(true);
-      // }, 10000);
-      // // hide text after 0.98 seconds
-      // setTimeout(() => {
-      //   setShowText(false);
-      // }, 9800);
+      }, time - 220);
 
       // tmp
       Cookies.remove('visited', { path: '/' });

@@ -6,6 +6,7 @@ import pcImage from '../assets/pc.png';
 
 <div class="first-view-container">
   <div class="key-visual-container">
+    <!-- PC Version -->
     <div class="key-visual-pc">
       <Picture
         src={pcImage}
@@ -17,14 +18,15 @@ import pcImage from '../assets/pc.png';
         priority
       />
       <div class="caption">
-        <h1 class="title">なついろにっき。</h1>
+        <h1>なついろにっき。</h1>
         <p>2025年8月8日 発売予定</p>
       </div>
+      <div class="blur-box"></div>
     </div>
+    <!-- Mobile Version -->
     <div class="key-visual-mobile">
       <Picture
         src={mobileImage}
-        class="key-visual-mobile"
         formats={['webp', 'avif']}
         alt="Key Visual"
         layout="full-width"
@@ -32,9 +34,13 @@ import pcImage from '../assets/pc.png';
         height={mobileImage.height}
         priority
       />
+      <!-- <div class="caption">
+        <h1>なついろにっき。</h1>
+        <p>2025年8月8日 発売予定</p>
+      </div> -->
+      <div class="blur-box"></div>
     </div>
   </div>
-  <div class="blur-box"></div>
 </div>
 
 <style>
@@ -45,24 +51,73 @@ import pcImage from '../assets/pc.png';
     overflow: hidden;
   }
 
+  /* PC Version */
   .key-visual-pc .caption {
     position: absolute;
-    bottom: 200px;
+    bottom: 150px;
     left: 100px;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     z-index: 2;
   }
 
-  .key-visual-pc .caption .title {
+  .key-visual-pc .caption h1 {
     font-size: 4vw;
     font-weight: bold;
   }
+
   .key-visual-pc .caption p {
-    font-size: 2vw;
+    font-size: 2.5vw;
     font-weight: bold;
   }
 
+  .key-visual-pc .blur-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(255, 251, 242, 0) 0%, rgba(255, 251, 242, 1) 100%);
+    z-index: 1;
+  }
+
+  /* Mobile Version */
+  .key-visual-mobile img {
+    min-height: 100lvh;
+    object-fit: cover;
+  }
+
+  /* .key-visual-mobile .caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+  }
+
+  .key-visual-mobile .caption h1 {
+    font-size: 8vw;
+    font-weight: bold;
+  }
+
+  .key-visual-mobile .caption p {
+    font-size: 5vw;
+    font-weight: bold;
+  } */
+
+  .key-visual-mobile .blur-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255, 251, 242, 0) 0%, rgba(255, 251, 242, 1) 100%);
+    z-index: 1;
+  }
+
+  /* Image Control */
   @media screen and (max-width: 935px) {
     .key-visual-pc {
       display: none;
@@ -72,15 +127,5 @@ import pcImage from '../assets/pc.png';
     .key-visual-mobile {
       display: none;
     }
-  }
-
-  .blur-box {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 300px;
-    background: linear-gradient(to bottom, rgba(255, 251, 242, 0) 0%, rgba(255, 251, 242, 1) 100%);
-    z-index: 1;
   }
 </style>

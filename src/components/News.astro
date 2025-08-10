@@ -7,16 +7,18 @@ import Li from '../components/utils/NewsLi.astro';
   <Title title="【お知らせ】" />
   <div class="grid-paper">
     <ul>
-      <Li url="https://natsuiro-teaser.com/news/2024-01-01/" title="20**年△月□日　ティザーサイト公開" />
-      <Li url="https://natsuiro-teaser.com/news/2024-01-02/" title="20**年○月◆日　公式Twitter開設" />
-      <Li url="https://natsuiro-teaser.com/news/2024-01-03/" title="20**年▽月□日　公式YouTubeチャンネル開設" />
+      <Li url="https://natsuiro-teaser.com/news/2024-01-01/" date="2024年1月1日" title="ティザーサイト公開" />
+      <Li url="https://natsuiro-teaser.com/news/2024-01-02/" date="2024年1月2日" title="公式Twitter開設" />
+      <Li url="https://natsuiro-teaser.com/news/2024-01-03/" date="2024年1月3日" title="公式YouTubeチャンネル開設" />
+      <Li url="https://natsuiro-teaser.com/news/2024-01-03/" date="2024年1月3日" title="公式YouTubeチャンネル開設" />
     </ul>
   </div>
 </section>
 
 <style>
   .grid-paper {
-    padding: 30px 0;
+    height: 200px;
+    padding: 30px;
     background-image:
       linear-gradient(var(--line-color) 1px, transparent 1px),
       linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
@@ -27,9 +29,18 @@ import Li from '../components/utils/NewsLi.astro';
     justify-content: center;
   }
   ul {
+    height: 200px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     margin: 0 auto;
+    padding: 10px 0 30px 0;
     list-style: none;
     line-height: 2.5;
     width: fit-content;
+    max-width: 1000px;
+  }
+  ul::-webkit-scrollbar {
+    display: none;
   }
 </style>

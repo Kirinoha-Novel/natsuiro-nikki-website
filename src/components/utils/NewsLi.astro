@@ -1,14 +1,35 @@
 ---
-const { url, title } = Astro.props;
+const { url, date, title } = Astro.props;
 ---
 
 <li>
-  <a href={url}>{title}</a>
+  <a href={url}>
+    <span class="date">{date}</span>
+    <span class="title">{title}</span>
+  </a>
 </li>
 
 <style>
   a {
     font-size: var(--p-font-size);
     color: var(--note-color);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  li {
+    padding: 20px 30px 0 30px;
+    border-bottom: 1px solid var(--note-color);
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  .date {
+    font-size: 1.3rem;
+  }
+  .title {
+    font-size: 1.4rem;
   }
 </style>
