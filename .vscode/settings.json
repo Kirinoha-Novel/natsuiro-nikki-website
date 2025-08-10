@@ -15,5 +15,8 @@
     "typescriptreact" // Enable .tsx
   ],
   // Code Spell Checkerの設定
-  "cSpell.words": ["natsuiro"]
+  "cSpell.words": [
+    "kirinohanovel",
+    "natsuiro"
+  ]
 }
