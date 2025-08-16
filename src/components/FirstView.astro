@@ -2,6 +2,7 @@
 import { Picture } from 'astro:assets';
 import mobileImage from '../assets/mobile.png';
 import pcImage from '../assets/pc.webp';
+import logoImage from '../assets/logo.png';
 ---
 
 <div class="first-view-container">
@@ -18,8 +19,15 @@ import pcImage from '../assets/pc.webp';
         priority
       />
       <div class="caption">
-        <h1>なついろにっき。</h1>
-        <p>2025年8月8日 発売予定</p>
+        <Picture
+          src={logoImage}
+          formats={['webp', 'avif']}
+          alt="Key Visual"
+          layout="full-width"
+          width={logoImage.width}
+          height={logoImage.height}
+          priority
+        />
       </div>
       <div class="blur-box"></div>
     </div>
@@ -53,21 +61,12 @@ import pcImage from '../assets/pc.webp';
   /* PC Version */
   .key-visual-pc .caption {
     position: absolute;
-    bottom: 150px;
-    left: 100px;
+    bottom: 100px;
+    left: 20px;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     z-index: 2;
-  }
-
-  .key-visual-pc .caption h1 {
-    font-size: 4vw;
-    font-weight: bold;
-  }
-
-  .key-visual-pc .caption p {
-    font-size: 2.5vw;
-    font-weight: bold;
+    width: 800px;
   }
 
   .key-visual-pc .blur-box {
