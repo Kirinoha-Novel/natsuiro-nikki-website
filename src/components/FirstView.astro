@@ -18,7 +18,7 @@ import logoImage from '../assets/logo.png';
         height={pcImage.height}
         priority
       />
-      <div class="caption">
+      <div class="logo">
         <Picture
           src={logoImage}
           formats={['webp', 'avif']}
@@ -35,6 +35,7 @@ import logoImage from '../assets/logo.png';
     <div class="key-visual-mobile">
       <Picture
         src={mobileImage}
+        class={'key-visual-mobile-img'}
         formats={['webp', 'avif']}
         alt="Key Visual"
         layout="full-width"
@@ -42,10 +43,17 @@ import logoImage from '../assets/logo.png';
         height={mobileImage.height}
         priority
       />
-      <!-- <div class="caption">
-        <h1>なついろにっき。</h1>
-        <p>2025年8月8日 発売予定</p>
-      </div> -->
+      <div class="logo">
+        <Picture
+          src={logoImage}
+          formats={['webp', 'avif']}
+          alt="Key Visual"
+          layout="full-width"
+          width={logoImage.width}
+          height={logoImage.height}
+          priority
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -59,14 +67,30 @@ import logoImage from '../assets/logo.png';
   }
 
   /* PC Version */
-  .key-visual-pc .caption {
+  .key-visual-pc .logo {
     position: absolute;
-    bottom: 100px;
+    bottom: 20px;
     left: 20px;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     z-index: 2;
-    width: 800px;
+  }
+
+  /* Logo Image Control */
+  @media screen and (max-width: 1200px) {
+    .key-visual-pc .logo {
+      width: 60vw;
+    }
+  }
+  @media screen and (max-width: 1400px) and (min-width: 1201px) {
+    .key-visual-pc .logo {
+      width: 55vw;
+    }
+  }
+  @media screen and (min-width: 1401px) {
+    .key-visual-pc .logo {
+      width: 50vw;
+    }
   }
 
   .key-visual-pc .blur-box {
@@ -80,12 +104,12 @@ import logoImage from '../assets/logo.png';
   }
 
   /* Mobile Version */
-  .key-visual-mobile img {
+  .key-visual-mobile .key-visual-mobile-img {
     min-height: 100lvh;
     object-fit: cover;
   }
 
-  /* .key-visual-mobile .caption {
+  .key-visual-mobile .logo {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -93,25 +117,33 @@ import logoImage from '../assets/logo.png';
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     z-index: 2;
+    width: 100%;
   }
 
-  .key-visual-mobile .caption h1 {
-    font-size: 8vw;
-    font-weight: bold;
+  /* Logo Image Control */
+  @media screen and (max-width: 700px) {
+    .key-visual-mobile .logo {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 930px) and (min-width: 701px) {
+    .key-visual-mobile .logo {
+      width: 80%;
+    }
+  }
+  @media screen and (min-width: 931px) {
+    .key-visual-mobile .logo {
+      width: 65%;
+    }
   }
 
-  .key-visual-mobile .caption p {
-    font-size: 5vw;
-    font-weight: bold;
-  } */
-
-  /* Image Control */
-  @media screen and (max-width: 935px) {
+  /* First View Image Control */
+  @media screen and (max-width: 1000px) {
     .key-visual-pc {
       display: none;
     }
   }
-  @media screen and (min-width: 936px) {
+  @media screen and (min-width: 1001px) {
     .key-visual-mobile {
       display: none;
     }
