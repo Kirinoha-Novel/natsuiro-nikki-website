@@ -11,7 +11,7 @@ body {
   --note-bg-color: #fffbf2;
   --line-color: #e0d9c4;
   --footer-bg-color: #f3eede;
-  --p-font-size: 1.5rem;
+  --text-font-size: 1.5rem;
 }
 
 @media screen and (max-width: 935px) {

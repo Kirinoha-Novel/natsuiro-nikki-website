@@ -4,24 +4,11 @@ import Title from '../components/utils/Title.astro';
 
 <section>
   <Title title="【あらすじ】" />
-  <div class="grid-paper-pc">
+  <div class="grid-paper">
     <p>
       千ヶ崎蓮は、堕落した大学生活を送っていた。<br />
       ある夏の朝、天使・ステラが現れる。<br />
       彼女は毎朝、蓮を起こしにやって来る。<br />
-      繰り返される朝の訪れの中で、<br />
-      少しずつ変わっていく生活と、ふたりの距離。<br />
-      やがて迎える別れのとき――<br />
-      <span class="finish">その選択が、結末を大きく変えていく。</span><br />
-    </p>
-  </div>
-  <div class="grid-paper-mobile">
-    <p>
-      千ヶ崎蓮は、堕落した大学生活を送っていた。<br />
-      ある夏の朝、天使・ステラが現れる。<br />
-      彼女は毎朝、蓮を起こしにやって来る。<br />
-    </p>
-    <p>
       繰り返される朝の訪れの中で、<br />
       少しずつ変わっていく生活と、ふたりの距離。<br />
       やがて迎える別れのとき――<br />
@@ -31,8 +18,8 @@ import Title from '../components/utils/Title.astro';
 </section>
 
 <style>
-  .grid-paper-pc {
-    height: 650px;
+  .grid-paper {
+    padding: 60px 0;
     background-image:
       linear-gradient(var(--line-color) 1px, transparent 1px),
       linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
@@ -43,37 +30,20 @@ import Title from '../components/utils/Title.astro';
     justify-content: center;
   }
 
-  .grid-paper-mobile {
-    height: 1300px;
-    background-image:
-      linear-gradient(var(--line-color) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
-    background-size: 2.2rem 2.2rem;
-    background-position: center top;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    align-items: center;
-    justify-content: center;
+  .grid-paper p {
+    padding: 0 10px;
+    line-height: 2.5;
+    font-size: var(--text-font-size);
+    color: var(--note-color);
   }
 
   /* Grid Paper Control */
   @media screen and (max-width: 935px) {
-    .grid-paper-pc {
-      display: none;
-    }
   }
   @media screen and (min-width: 936px) {
-    .grid-paper-mobile {
-      display: none;
+    .grid-paper p {
+      writing-mode: vertical-rl;
     }
-  }
-
-  p {
-    writing-mode: vertical-rl;
-    line-height: 2.5;
-    font-size: var(--p-font-size);
-    color: var(--note-color);
   }
 
   .finish {

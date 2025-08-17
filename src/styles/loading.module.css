@@ -15,9 +15,12 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  container-type: inline-size;
   color: var(--note-color);
   animation: fadeIn 1.5s forwards;
+  width: 100%;
+  text-align: center;
+  font-size: min(6cqw, 2.3rem);
 }
 
 @keyframes fadeIn {
