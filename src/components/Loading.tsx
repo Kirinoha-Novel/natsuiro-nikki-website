@@ -33,9 +33,6 @@ const Loading = () => {
       setTimeout(() => {
         setShowText(false);
       }, time - 220);
-
-      // tmp
-      Cookies.remove('visited', { path: '/' });
     }
   }, []);
 
