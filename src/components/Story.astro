@@ -6,13 +6,18 @@ import Title from '../components/utils/Title.astro';
   <Title title="【あらすじ】" />
   <div class="grid-paper">
     <p>
-      千ヶ崎蓮は、堕落した大学生活を送っていた。<br />
-      ある夏の朝、天使・ステラが現れる。<br />
-      彼女は毎朝、蓮を起こしにやって来る。<br />
-      繰り返される朝の訪れの中で、<br />
-      少しずつ変わっていく生活と、ふたりの距離。<br />
-      やがて迎える別れのとき――<br />
-      <span class="finish">その選択が、結末を大きく変えていく。</span><br />
+      「じゃあ、願いが見つかるまで、毎朝起こしに来るわ。」<br />
+      <br />
+      長い長い夏休みは、１人で過ごすには退屈すぎた。<br />
+      夢も希望もない留年寸前の大学生・蓮のもとに表れたのは、<br />
+      なんでも願いを叶えてくれるという期限付きの"天使"ステラ。<br />
+      願いのない蓮は、本当の願いを見つけるまで<br />
+      ステラに毎朝起こしてもらうことに。<br />
+      <br />
+      二人で過ごす、ちょっと遅れた夏休み。<br />
+      夏休みに終わりが見えても、彼女の手を話せなかった。<br />
+      甘くて、痛くて、やさしい物語の行き先は――<br />
+      依存か、自立か、それとも・・・。<br />
     </p>
   </div>
 </section>
@@ -33,20 +38,19 @@ import Title from '../components/utils/Title.astro';
   .grid-paper p {
     padding: 0 10px;
     line-height: 2.5;
-    font-size: var(--text-font-size);
+    font-size: var(--base-font-size);
     color: var(--note-color);
   }
 
   /* Grid Paper Control */
   @media screen and (max-width: 935px) {
+    .grid-paper p {
+      text-align: center;
+    }
   }
   @media screen and (min-width: 936px) {
     .grid-paper p {
       writing-mode: vertical-rl;
     }
-  }
-
-  .finish {
-    font-size: 1.9rem;
   }
 </style>

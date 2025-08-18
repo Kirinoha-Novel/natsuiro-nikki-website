@@ -11,7 +11,10 @@ body {
   --note-bg-color: #fffbf2;
   --line-color: #e0d9c4;
   --footer-bg-color: #f3eede;
-  --text-font-size: 1.6rem;
+  --lg-font-size: clamp(2rem, 6cqw, 2.6rem);
+  --base-font-size: 1.3rem;
+  --sm-font-size: 1.2rem;
+  --xs-font-size: 1rem;
 }
 
 @media screen and (max-width: 935px) {
