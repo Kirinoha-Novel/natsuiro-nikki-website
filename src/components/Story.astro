@@ -16,7 +16,7 @@ import Title from '../components/utils/Title.astro';
       <br />
       二人で過ごす、ちょっと遅れた夏休み。<br />
       夏休みに終わりが見えても、彼女の手を話せなかった。<br />
-      甘くて、痛くて、やさしい物語の行き先は――<br />
+      甘くて、痛くて、やさしい物語の行き先は<span class="dash">――</span><br />
       依存か、自立か、それとも・・・。<br />
     </p>
   </div>
@@ -40,6 +40,12 @@ import Title from '../components/utils/Title.astro';
     line-height: 2.5;
     font-size: var(--base-font-size);
     color: var(--note-color);
+  }
+
+  .grid-paper p .dash {
+    letter-spacing: -0.2em;
+    width: 2em;
+    margin-right: 0.5em;
   }
 
   /* Grid Paper Control */
