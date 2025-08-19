@@ -5,18 +5,44 @@ import Title from '../components/utils/Title.astro';
 <section>
   <Title title="【あらすじ】" />
   <div class="grid-paper">
-    <p>
-      「じゃあ、願いが見つかるまで、毎朝起こしに来るわ。」<br />
+    <p class="pc-view">
+      「じゃあ、願いが見つかるまで、<br />
+      毎朝起こしに来るわ。」<br />
       <br />
       長い長い夏休みは、１人で過ごすには退屈すぎた。<br />
-      夢も希望もない留年寸前の大学生・蓮のもとに表れたのは、<br />
-      なんでも願いを叶えてくれるという期限付きの"天使"ステラ。<br />
+      夢も希望もない留年寸前の<br />
+      大学生・蓮のもとに表れたのは、<br />
+      なんでも願いを叶えてくれるという<br />
+      期限付きの"天使"ステラ。<br />
       願いのない蓮は、本当の願いを見つけるまで<br />
       ステラに毎朝起こしてもらうことに。<br />
       <br />
       二人で過ごす、ちょっと遅れた夏休み。<br />
-      夏休みに終わりが見えても、彼女の手を話せなかった。<br />
+      夏休みに終わりが見えても、彼女の手を離せなかった。<br />
       甘くて、痛くて、やさしい物語の行き先は<span class="dash">――</span><br />
+      依存か、自立か、それとも・・・。<br />
+    </p>
+    <p class="mobile-view">
+      「じゃあ、願いが見つかるまで、<br />
+      毎朝起こしに来るわ。」<br />
+      <br />
+      長い長い夏休みは、<br />
+      １人で過ごすには退屈すぎた。<br />
+      夢も希望もない留年寸前の<br />
+      大学生・蓮のもとに表れたのは、<br />
+      なんでも願いを叶えてくれるという<br />
+      期限付きの"天使"ステラ。<br />
+      <br />
+      願いのない蓮は、<br />
+      本当の願いを見つけるまで<br />
+      ステラに毎朝起こしてもらうことに。<br />
+      <br />
+      二人で過ごす、<br />
+      ちょっと遅れた夏休み。<br />
+      夏休みに終わりが見えても、<br />
+      彼女の手を離せなかった。<br />
+      甘くて、痛くて、<br />
+      やさしい物語の行き先は<span class="dash">――</span><br />
       依存か、自立か、それとも・・・。<br />
     </p>
   </div>
@@ -35,28 +61,39 @@ import Title from '../components/utils/Title.astro';
     justify-content: center;
   }
 
-  .grid-paper p {
-    padding: 0 10px;
-    line-height: 2.5;
-    font-size: var(--base-font-size);
-    color: var(--note-color);
-  }
-
   .grid-paper p .dash {
     letter-spacing: -0.2em;
     width: 2em;
     margin-right: 0.5em;
   }
 
+  /* PC Version */
+  .grid-paper .pc-view {
+    padding: 0 10px;
+    line-height: 2.5;
+    font-size: var(--base-font-size);
+    color: var(--note-color);
+    writing-mode: vertical-rl;
+  }
+
+  /* Mobile Version */
+  .grid-paper .mobile-view {
+    padding: 0 10px;
+    line-height: 1.5;
+    font-size: var(--base-font-size);
+    color: var(--note-color);
+    text-align: center;
+  }
+
   /* Grid Paper Control */
   @media screen and (max-width: 935px) {
-    .grid-paper p {
-      text-align: center;
+    .pc-view {
+      display: none;
     }
   }
   @media screen and (min-width: 936px) {
-    .grid-paper p {
-      writing-mode: vertical-rl;
+    .mobile-view {
+      display: none;
     }
   }
 </style>
