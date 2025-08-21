@@ -39,6 +39,7 @@ import logoImage from '../assets/logo.webp';
         src={mobileImage}
         class={'key-visual-mobile-img'}
         formats={['webp', 'avif']}
+        fallbackFormat="jpeg"
         alt="Key Visual"
         layout="full-width"
         width={mobileImage.width}
@@ -49,6 +50,7 @@ import logoImage from '../assets/logo.webp';
         <Picture
           src={logoImage}
           formats={['webp', 'avif']}
+          fallbackFormat="jpeg"
           alt="Key Visual"
           layout="full-width"
           width={logoImage.width}
