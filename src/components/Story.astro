@@ -80,9 +80,20 @@ import Title from '../components/utils/Title.astro';
   .grid-paper .mobile-view {
     padding: 0 10px;
     line-height: 1.5;
-    font-size: var(--base-font-size);
     color: var(--note-color);
     text-align: center;
+  }
+
+  /* Font Size Control */
+  @media screen and (min-width: 470px) {
+    .mobile-view {
+      font-size: var(--base-font-size);
+    }
+  }
+  @media screen and (max-width: 469px) {
+    .mobile-view {
+      font-size: var(--small-font-size);
+    }
   }
 
   /* Grid Paper Control */
