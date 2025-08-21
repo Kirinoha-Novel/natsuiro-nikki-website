@@ -12,6 +12,7 @@ import logoImage from '../assets/logo.webp';
       <Picture
         src={pcImage}
         formats={['webp', 'avif']}
+        fallbackFormat="jpeg"
         alt="Key Visual"
         layout="full-width"
         width={pcImage.width}
@@ -22,6 +23,7 @@ import logoImage from '../assets/logo.webp';
         <Picture
           src={logoImage}
           formats={['webp', 'avif']}
+          fallbackFormat="jpeg"
           alt="Key Visual"
           layout="full-width"
           width={logoImage.width}
