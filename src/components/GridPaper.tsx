@@ -2,8 +2,8 @@ import { useEffect, useRef, type FC } from 'react';
 import styles from '../styles/grid-paper.module.css';
 
 const GridPaper: FC = () => {
-  const stellaImage = '/stella.png';
-  const renImage = '/ren.png';
+  const stellaImage = '/stella.webp';
+  const renImage = '/ren.webp';
 
   const isMorning = useRef<boolean>(false);
 
