@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import Cookies from 'js-cookie';
 import styles from '../styles/loading.module.css';
 
-const Loading = () => {
+const Loading: FC = () => {
   const [showLoading, setShowLoading] = useState(false);
   const [showText, setShowText] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
