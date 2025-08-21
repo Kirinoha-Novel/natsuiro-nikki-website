@@ -1,0 +1,70 @@
+.gridPaper {
+  padding: 60px 0 170px 0;
+  background-image:
+    linear-gradient(var(--line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
+  background-size: 2.2rem 2.2rem;
+  background-position: center top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash {
+  letter-spacing: -0.2em;
+  width: 2em;
+  margin-right: 0.5em;
+}
+
+.sign {
+  width: 200px;
+  margin: -100px 0 0 30px;
+}
+
+.signImg {
+  width: 100%;
+}
+
+/* PC Version */
+.pcView {
+  padding: 0 10px;
+  line-height: 2.5;
+  font-size: var(--base-font-size);
+  color: var(--note-color);
+  writing-mode: vertical-rl;
+}
+
+/* Mobile Version */
+.mobileView {
+  padding: 0 10px;
+  line-height: 1.5;
+  color: var(--note-color);
+  text-align: center;
+}
+
+/* Font Size Control */
+@media screen and (min-width: 470px) {
+  .mobileView {
+    font-size: var(--base-font-size);
+  }
+}
+@media screen and (max-width: 469px) {
+  .mobileView {
+    font-size: var(--small-font-size);
+  }
+}
+
+/* Grid Paper Control */
+@media screen and (max-width: 935px) {
+  .pcView {
+    display: none;
+  }
+  .sign {
+    display: none;
+  }
+}
+@media screen and (min-width: 936px) {
+  .mobileView {
+    display: none;
+  }
+}
