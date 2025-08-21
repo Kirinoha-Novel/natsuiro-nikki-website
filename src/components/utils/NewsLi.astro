@@ -26,10 +26,20 @@ const { url, date, title } = Astro.props;
     display: inline-block;
   }
 
-  .date {
-    font-size: var(--sm-font-size);
+  @media screen and (min-width: 470px) {
+    .date {
+      font-size: var(--sm-font-size);
+    }
+    .title {
+      font-size: var(--base-font-size);
+    }
   }
-  .title {
-    font-size: var(--base-font-size);
+  @media screen and (max-width: 469px) {
+    .date {
+      font-size: var(--sm-font-size);
+    }
+    .title {
+      font-size: var(--sm-font-size);
+    }
   }
 </style>
