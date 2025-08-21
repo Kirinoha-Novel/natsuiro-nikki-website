@@ -108,6 +108,8 @@ const GridPaper: FC = () => {
           src={isMorning.current ? stellaImage : renImage}
           alt={isMorning.current ? 'ステラのサイン' : '蓮のサイン'}
           className={styles.signImg}
+          width={isMorning.current ? 1029 : 764}
+          height={isMorning.current ? 330 : 259}
         />
       </div>
     </>
