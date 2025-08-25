@@ -40,7 +40,7 @@ const Loading: FC = () => {
     <>
       {showLoading && (
         <div className={`${styles.overlay} ${fadeOut ? styles.fadeOut : ''}`}>
-          {showText && <h1 className={styles.title}>少女と過ごす、少し不思議な夏休み</h1>}
+          {showText && <p className={styles.title}>少女と過ごす、少し不思議な夏休み</p>}
         </div>
       )}
     </>
