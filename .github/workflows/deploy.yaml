@@ -17,6 +17,8 @@ jobs:
           nix_path: nixpkgs=channel:nixpkgs-unstable
       - name: ESLint Verification
         run: nix develop --command bash -c "npm i && npm run lint"
+      - name: Test Verification
+        run: nix develop --command bash -c "npm i && npm run test"
       - name: Build with Build Verification
         run: nix develop --command bash -c "npm i && npm run build"
       - name: Deploy to Cloudflare Workers
