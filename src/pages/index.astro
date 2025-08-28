@@ -10,6 +10,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
   <Loading client:load />
+  <div class="overlay"></div>
   <FirstView />
   <main>
     <News />
@@ -24,4 +25,27 @@ import Layout from '../layouts/Layout.astro';
     margin: 0 auto;
     max-width: 1200px;
   }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--note-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 1;
+  }
+
+  .loaded {
+    display: none;
+  }
 </style>
+
+<script>
+  const overlay = window.document.querySelector('.overlay');
+
+  window.addEventListener('load', () => {
+    overlay?.classList.add('loaded');
+  });
+</script>
