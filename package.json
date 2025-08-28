@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "npx astro build && npx wrangler@latest deploy",
     "fmt": "npx prettier . --write",
     "lint": "eslint \"src/**/*.{ts,tsx,astro}\"",
     "lint:fix": "eslint --fix \"src/**/*.{ts,tsx,astro}\"",
