@@ -20,7 +20,8 @@
     "@types/js-cookie": "^3.0.6",
     "astro": "^5.10.1",
     "js-cookie": "^3.0.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wrangler": "^4.33.1"
   },
   "devDependencies": {
     "eslint": "^9.29.0",
