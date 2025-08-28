@@ -14,7 +14,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.6",
     "@astrojs/react": "^4.3.0",
     "@types/js-cookie": "^3.0.6",
     "astro": "^5.10.1",
