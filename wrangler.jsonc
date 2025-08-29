@@ -3,11 +3,11 @@
   "compatibility_date": "2025-08-28",
   "routes" : [
     {
-      "pattern": "kirinohanovel.com/*",
+      "pattern": "kirinohanovel.com/natsuiro/*",
       "zone_id": "kirinohanovel.com"
     },
     {
-      "pattern": "www.kirinohanovel.com/*",
+      "pattern": "www.kirinohanovel.com/natsuiro/*",
       "zone_id": "kirinohanovel.com"
     }
   ],
