@@ -5,6 +5,7 @@ type ContentLink = { id: string; label: string };
 const CONTENT_LINKS: ContentLink[] = [
   { id: 'info', label: 'お知らせ' },
   { id: 'summary', label: 'あらすじ' },
+  { id: 'character', label: '登場人物' },
   { id: 'video', label: '動画' },
 ];
 
