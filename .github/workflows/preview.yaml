@@ -37,56 +37,82 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: |
             versions upload --message "Deployed a Preview by GitHub Actions: branch ${{ github.ref_name }}"
-      # Ref: https://github.com/actions/github-script
-      # Ref: https://zenn.dev/yamachu/articles/0b4e520229239d
-      - name: Comment Preview Summary
+      - name: Create Preview Summary File (Success Pattern)
+        id: create-success-summary
         env:
           COMMIT_SHA: ${{ github.sha }}
-          PR_NUMBER: ${{ github.event.pull_request.number || '' }}
           COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
           DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url }}
           PAGES_ENV: "${{ steps.preview.outputs.pages-environment }}"
-        uses: actions/github-script@v8
-        with:
-          script: | #```typescript
-            const commitSha = process.env.COMMIT_SHA;
-            const prNumber = process.env.PR_NUMBER;
-            const commandOutput = process.env.COMMAND_OUTPUT;
-            const deploymentUrl = process.env.DEPLOYMENT_URL;
-            const deploymentEnv = process.env.PAGES_ENV;
-            if (!deploymentUrl) {
-              console.error("No deployment URL available.");
-              return;
-            }
-            if (prNumber === '') {
-              console.info("Not a pull request, skipping comment.");
-              return;
-            }
-            const commentBody = `
-              # Deploying ${deploymentEnv} with 🚀 Cloudflare Workers
-              ---
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Latest commit:</td>
-                    <td>${commitSha}</td>
-                  </tr>
-                  <tr>
-                    <td>Preview URL:</td>
-                    <td>${deploymentUrl}</td>
-                  </tr>
-                </tbody>
-              </table>
+        if : ${{ steps.preview.outcome == 'success' }}
+        run: |
+          cat << EOF > preview-summary.md
+          # Deploying ${{ env.PAGES_ENV }} with 🚀 Cloudflare Workers
+          ---
+          <table>
+            <tbody>
+              <tr>
+                <td>Latest commit:</td>
+                <td>${{ env.COMMIT_SHA }}</td>
+              </tr>
+              <tr>
+                <td>Status:</td>
+                <td>✅ Deploy successful!</td>
+              </tr>
+              <tr>
+                <td>Preview URL:</td>
+                <td>${{ env.DEPLOYMENT_URL }}</td>
+              </tr>
+            </tbody>
+          </table>
 
-              <details>
-                <summary>View logs</summary>
-                ${commandOutput}
-              </details>
-            `;
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: parseInt(prNumber, 10),
-              body: commentBody,
-            });
-          #```
+          <details>
+            <summary>View logs</summary>
+            ${{ env.COMMAND_OUTPUT }}
+          </details>
+          EOF
+      - name: Create Preview Summary File (Failure Pattern)
+        id: create-failed-summary
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+          COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
+          COMMAND_STDERR: ${{ steps.preview.outputs.command-stderr }}
+          DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url || 'N/A' }}
+          PAGES_ENV: "${{ steps.preview.outputs.pages-environment }}"
+        if: ${{ steps.preview.outcome != 'success' }}
+        run: |
+          cat << EOF > preview-summary.md
+          # Deploying ${{ env.PAGES_ENV }} with 🚀 Cloudflare Workers
+          ---
+          <table>
+            <tbody>
+              <tr>
+                <td>Latest commit:</td>
+                <td>${{ env.COMMIT_SHA }}</td>
+              </tr>
+              <tr>
+                <td>Status:</td>
+                <td>❌ Deploy failed...</td>
+              </tr>
+              <tr>
+                <td>Preview URL:</td>
+                <td>${{ env.DEPLOYMENT_URL }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <details>
+            <summary>View logs</summary>
+            ${{ env.COMMAND_OUTPUT }}
+          </details>
+          <details>
+            <summary>View stderr</summary>
+            ${{ env.COMMAND_STDERR }}
+          </details>
+          EOF
+      - name: Comment Preview Summary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ steps.create-failed-summary.outcome == 'success' || steps.create-success-summary.outcome == 'success' }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body-file preview-summary.md
