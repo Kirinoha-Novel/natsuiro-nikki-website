@@ -27,12 +27,6 @@
   border-bottom: var(--bookmark-after-height) solid transparent;
 }
 
-@media screen and (max-width: 319px) {
-  .bookmark {
-    display: none;
-  }
-}
-
 .lineBox {
   --line-gap: 10px;
   display: flex;
