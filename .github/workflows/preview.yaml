@@ -22,8 +22,8 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixpkgs-unstable
-      # Build Check debt-manager
-      - name: Build Check debt-manager
+      # Build
+      - name: Build
         run: nix develop --command bash -c "npm i && npm run build"
       # Deploy Preview to Cloudflare Workers
       # Ref: https://zenn.dev/lalalatotoro/articles/b8fa632b53d332
