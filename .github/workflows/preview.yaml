@@ -61,7 +61,7 @@ jobs:
               </tr>
               <tr>
                 <td>Preview URL:</td>
-                <td>${{ env.DEPLOYMENT_URL }}</td>
+                <td><a target="_blank" rel="noopener noreferrer" href="${{ env.DEPLOYMENT_URL }}">${{ env.DEPLOYMENT_URL }}</a></td>
               </tr>
             </tbody>
           </table>
@@ -96,7 +96,7 @@ jobs:
               </tr>
               <tr>
                 <td>Preview URL:</td>
-                <td>${{ env.DEPLOYMENT_URL }}</td>
+                <td><a target="_blank" rel="noopener noreferrer" href="${{ env.DEPLOYMENT_URL }}">${{ env.DEPLOYMENT_URL }}</a></td>
               </tr>
             </tbody>
           </table>
