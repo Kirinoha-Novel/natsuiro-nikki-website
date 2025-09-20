@@ -42,6 +42,7 @@ jobs:
       - name: Comment Preview Summary
         env:
           COMMIT_SHA: ${{ github.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number || '' }}
           COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
           DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url }}
           PAGES_ENV: "${{ steps.preview.outputs.pages-environment }}"
@@ -49,11 +50,16 @@ jobs:
         with:
           script: | #```typescript
             const commitSha = process.env.COMMIT_SHA;
+            const prNumber = process.env.PR_NUMBER;
             const commandOutput = process.env.COMMAND_OUTPUT;
             const deploymentUrl = process.env.DEPLOYMENT_URL;
             const deploymentEnv = process.env.PAGES_ENV;
             if (!deploymentUrl) {
               console.error("No deployment URL available.");
+              return;
+            }
+            if (prNumber === '') {
+              console.info("Not a pull request, skipping comment.");
               return;
             }
             const commentBody = `
@@ -78,9 +84,9 @@ jobs:
               </details>
             `;
             github.rest.issues.createComment({
-              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
+              issue_number: parseInt(prNumber, 10),
               body: commentBody,
             });
           #```
