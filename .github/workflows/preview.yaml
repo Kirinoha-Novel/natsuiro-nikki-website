@@ -1,12 +1,11 @@
 name: preview
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 on:
-  pull_request:
-    branches: ['*', '!main']
+  push:
   workflow_dispatch:
 
 jobs:
@@ -24,6 +23,9 @@ jobs:
       - name: Build Check debt-manager
         run: nix develop --command bash -c "npm i && npm run build"
       # Deploy Preview to Cloudflare Workers
+      # Ref: https://zenn.dev/lalalatotoro/articles/b8fa632b53d332
+      # Ref: https://zenn.dev/nikomaru/articles/0cea1b1e2fd4f2
+      # Ref: https://developers.cloudflare.com/workers/wrangler/commands/#versions-upload
       - name: Deploy Preview to Cloudflare Workers
         id: preview
         uses: cloudflare/wrangler-action@v3
@@ -32,6 +34,8 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: |
             versions upload --message "Deployed a Preview by GitHub Actions: branch ${{ github.ref_name }}"
+      # Ref: https://github.com/actions/github-script
+      # Ref: https://zenn.dev/yamachu/articles/0b4e520229239d
       - name: Comment Preview Summary
         env:
           COMMIT_SHA: ${{ github.sha }}
