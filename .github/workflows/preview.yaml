@@ -44,12 +44,14 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
           COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
           DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url }}
+          PAGES_ENV: "${{ steps.preview.outputs.pages-environment }}"
         uses: actions/github-script@v8
         with:
           script: | #```typescript
             const commitSha = process.env.COMMIT_SHA;
             const commandOutput = process.env.COMMAND_OUTPUT;
             const deploymentUrl = process.env.DEPLOYMENT_URL;
+            const deploymentEnv = process.env.PAGES_ENV;
             if (!deploymentUrl) {
               console.error("No deployment URL available.");
               return;
