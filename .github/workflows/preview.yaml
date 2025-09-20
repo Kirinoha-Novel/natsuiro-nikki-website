@@ -1,0 +1,77 @@
+name: preview
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      # Install Nix
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixpkgs-unstable
+      # Build Check debt-manager
+      - name: Build Check debt-manager
+        run: nix develop --command bash -c "npm i && npm run build"
+      # Deploy Preview to Cloudflare Workers
+      - name: Deploy Preview to Cloudflare Workers
+        id: preview
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: |
+            versions upload --message "Deployed a Preview by GitHub Actions: branch ${{ github.ref_name }}"
+      - name: Comment Preview Summary
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+          COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
+          DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url }}
+        uses: actions/github-script@v8
+        with:
+          script: | #```typescript
+            const commitSha = process.env.COMMIT_SHA;
+            const commandOutput = process.env.COMMAND_OUTPUT;
+            const deploymentUrl = process.env.DEPLOYMENT_URL;
+            if (!deploymentUrl) {
+              console.error("No deployment URL available.");
+              return;
+            }
+            const commentBody = `
+              # Deploying ${deploymentEnv} with 🚀 Cloudflare Workers
+              ---
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Latest commit:</td>
+                    <td>${commitSha}</td>
+                  </tr>
+                  <tr>
+                    <td>Preview URL:</td>
+                    <td>${deploymentUrl}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <details>
+                <summary>View logs</summary>
+                ${commandOutput}
+              </details>
+            `;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody,
+            });
+          #```

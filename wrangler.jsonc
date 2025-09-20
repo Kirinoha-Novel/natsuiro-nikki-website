@@ -2,7 +2,7 @@
   "name": "natsuiro-nikki-website",
   "compatibility_date": "2025-08-28",
   "assets": {
-    "directory": "./dist/",
+    "directory": "./dist",
     "not_found_handling": "404-page"
   }
 }
