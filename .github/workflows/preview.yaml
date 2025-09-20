@@ -76,9 +76,6 @@ jobs:
         id: create-failed-summary
         env:
           COMMIT_SHA: ${{ github.sha }}
-          COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
-          COMMAND_STDERR: ${{ steps.preview.outputs.command-stderr }}
-          DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url || 'N/A' }}
         if: ${{ steps.preview.outcome != 'success' }}
         run: |
           cat << EOF > preview-summary.md
@@ -96,23 +93,21 @@ jobs:
               </tr>
               <tr>
                 <td>Preview URL:</td>
-                <td><a target="_blank" rel="noopener noreferrer" href="${{ env.DEPLOYMENT_URL }}">${{ env.DEPLOYMENT_URL }}</a></td>
+                <td>N/A</td>
               </tr>
             </tbody>
           </table>
-
-          <details>
-            <summary>View logs</summary>
-            ${{ env.COMMAND_OUTPUT }}
-          </details>
-          <details>
-            <summary>View stderr</summary>
-            ${{ env.COMMAND_STDERR }}
-          </details>
           EOF
-      - name: Comment Preview Summary
+      - name: Comment Preview Summary (Success Pattern)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ steps.create-failed-summary.outcome == 'success' || steps.create-success-summary.outcome == 'success' }}
+        if: ${{ steps.create-success-summary.outcome == 'success' }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} --body-file preview-summary.md
+      - name: Comment Preview Summary (Failure Pattern)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ steps.create-failed-summary.outcome == 'success' }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body-file preview-summary.md
+          exit 1
