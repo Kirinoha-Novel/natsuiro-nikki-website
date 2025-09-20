@@ -22,7 +22,7 @@ export const Header: FC = () => {
       const element = document.getElementById(id);
       element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       history.pushState(null, '', `#${id}`);
-    }, 500);
+    }, 50);
   }, []);
 
   return (
