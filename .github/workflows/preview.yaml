@@ -98,16 +98,14 @@ jobs:
             </tbody>
           </table>
           EOF
-      - name: Comment Preview Summary (Success Pattern)
+      - name: Comment Preview Summary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ steps.create-success-summary.outcome == 'success' }}
+        if: ${{ steps.create-failed-summary.outcome == 'success' || steps.create-success-summary.outcome == 'success' }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} --body-file preview-summary.md
-      - name: Comment Preview Summary (Failure Pattern)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ steps.create-failed-summary.outcome == 'success' }}
+      - name: Check Deploy Status
+        if: ${{ steps.preview.outcome != 'success' }}
         run: |
-          gh pr comment ${{ github.event.pull_request.number }} --body-file preview-summary.md
+          echo "Deploy failed"
           exit 1
