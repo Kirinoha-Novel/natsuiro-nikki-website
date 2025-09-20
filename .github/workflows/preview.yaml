@@ -24,6 +24,7 @@ jobs:
           nix_path: nixpkgs=channel:nixpkgs-unstable
       # Build
       - name: Build
+        id: build
         run: nix develop --command bash -c "npm i && npm run build"
       # Deploy Preview to Cloudflare Workers
       # Ref: https://zenn.dev/lalalatotoro/articles/b8fa632b53d332
@@ -31,6 +32,7 @@ jobs:
       # Ref: https://developers.cloudflare.com/workers/wrangler/commands/#versions-upload
       - name: Deploy Preview to Cloudflare Workers
         id: preview
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
