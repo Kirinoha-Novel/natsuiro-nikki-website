@@ -3,9 +3,9 @@ import Cookies from 'js-cookie';
 import styles from '../styles/loading.module.css';
 
 const Loading: FC = () => {
-  const [showLoading, setShowLoading] = useState(false);
-  const [showText, setShowText] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
+  const [showLoading, setShowLoading] = useState<boolean>(false);
+  const [showText, setShowText] = useState<boolean>(false);
+  const [fadeOut, setFadeOut] = useState<boolean>(false);
 
   useEffect(() => {
     const isVisited = Cookies.get('visited');

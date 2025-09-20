@@ -5,11 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--footer-bg-color);
+  background-color: #f3eede;
 }
 
 .text {
-  color: var(--note-color);
-  font-size: var(--xs-font-size);
+  color: var(--note-font-color);
+  font-size: var(--text-base);
   text-align: center;
 }

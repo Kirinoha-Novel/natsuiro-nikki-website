@@ -11,14 +11,14 @@ const { url, date, title } = Astro.props;
 
 <style>
   a {
-    color: var(--note-color);
+    color: var(--note-font-color);
     text-decoration: none;
     cursor: pointer;
   }
 
   li {
     padding: 20px 30px 0 30px;
-    border-bottom: 1px solid var(--note-color);
+    border-bottom: 1px solid var(--note-font-color);
   }
 
   span {
@@ -31,18 +31,18 @@ const { url, date, title } = Astro.props;
 
   @media screen and (min-width: 470px) {
     .date {
-      font-size: var(--sm-font-size);
+      font-size: var(--text-lg);
     }
     .title {
-      font-size: var(--base-font-size);
+      font-size: var(--text-xl);
     }
   }
   @media screen and (max-width: 469px) {
     .date {
-      font-size: var(--sm-font-size);
+      font-size: var(--text-lg);
     }
     .title {
-      font-size: var(--sm-font-size);
+      font-size: var(--text-lg);
     }
   }
 </style>

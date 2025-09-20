@@ -1,8 +1,8 @@
 .gridPaper {
   padding: 60px 0 170px 0;
   background-image:
-    linear-gradient(var(--line-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
+    linear-gradient(var(--note-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
   background-size: 2.2rem 2.2rem;
   background-position: center top;
   display: flex;
@@ -31,8 +31,8 @@
 .pcView {
   padding: 0 10px;
   line-height: 2.5;
-  font-size: var(--base-font-size);
-  color: var(--note-color);
+  font-size: var(--text-xl);
+  color: var(--note-font-color);
   writing-mode: vertical-rl;
 }
 
@@ -40,14 +40,14 @@
 .mobileView {
   padding: 0 10px;
   line-height: 1.5;
-  color: var(--note-color);
+  color: var(--note-font-color);
   text-align: center;
 }
 
 /* Font Size Control */
 @media screen and (min-width: 470px) {
   .mobileView {
-    font-size: var(--base-font-size);
+    font-size: var(--text-xl);
   }
 }
 @media screen and (max-width: 469px) {

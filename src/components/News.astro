@@ -4,7 +4,7 @@ import NewsLi from '../components/utils/NewsLi.astro';
 ---
 
 <div class="section">
-  <Title title="【お知らせ】" />
+  <Title id="info" title="【お知らせ】" />
   <div class="grid-paper">
     <ul>
       <NewsLi
@@ -31,8 +31,8 @@ import NewsLi from '../components/utils/NewsLi.astro';
     height: 200px;
     padding: 30px 10px;
     background-image:
-      linear-gradient(var(--line-color) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
+      linear-gradient(var(--note-line-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
     background-size: 2.2rem 2.2rem;
     background-position: center top;
     display: flex;
