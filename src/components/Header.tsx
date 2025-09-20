@@ -18,9 +18,11 @@ export const Header: FC = () => {
   const handleAnchorClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setIsOpen(false);
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.pushState(null, '', `#${id}`);
+    window.setTimeout(() => {
+      const element = document.getElementById(id);
+      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', `#${id}`);
+    }, 500);
   }, []);
 
   return (
