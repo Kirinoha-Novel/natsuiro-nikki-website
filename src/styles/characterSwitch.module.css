@@ -1,0 +1,181 @@
+.container {
+  background-image:
+    linear-gradient(var(--note-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
+  background-size: 2.2rem 2.2rem;
+  background-position: center top;
+  display: flex;
+  height: 740px;
+  padding: 50px 100px;
+}
+
+.stellaContainer {
+  flex-direction: row;
+}
+
+.renContainer {
+  flex-direction: column;
+}
+
+/** character switch button **/
+.characterSwitchButtonBox {
+  display: flex;
+  gap: 15px;
+  margin: 0 auto 20px auto;
+  width: fit-content;
+}
+
+.characterSwitchButton {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-2xl);
+}
+
+.stellaButton {
+  background-image: url('/normal.webp');
+  background-position: top;
+  background-size: 200%;
+  background-repeat: no-repeat;
+}
+
+.separate {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-2xl);
+}
+
+/** character image **/
+.characterImage {
+  width: fit-content;
+  height: 100%;
+}
+
+/** sign image **/
+/* stella sign */
+.stellaSignContainer {
+  height: 100%;
+  position: relative;
+}
+
+.stellaSignBox {
+  width: 250px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.stellaSignImage {
+  width: 100%;
+  height: auto;
+}
+
+/* ren sign */
+.renSignContainer {
+  height: 100%;
+  position: relative;
+  margin: 20px 0 0 0;
+}
+
+.renSignBox {
+  width: 250px;
+  position: absolute;
+  right: 0;
+}
+
+.renSignImage {
+  width: 100%;
+  height: auto;
+}
+
+/** description **/
+.title {
+  font-size: var(--text-4xl);
+  color: var(--note-font-color);
+}
+
+.description {
+  font-size: var(--text-xl);
+  color: var(--note-font-color);
+}
+
+.phrase {
+  font-size: var(--text-3xl);
+  color: var(--note-font-color);
+}
+
+.stellaPhrase {
+  background: linear-gradient(transparent 70%, #66c7ff65 0%);
+}
+
+.renPhrase {
+  background: linear-gradient(transparent 70%, #8266ff65 0%);
+}
+
+/** emotion button **/
+.emotionButtonBox {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin: 100px 0 0 30px;
+}
+
+.emotionButton {
+  background-position: top;
+  background-size: 200%;
+  background-repeat: no-repeat;
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.inActive {
+  background-color: #a8a8a8;
+  filter: grayscale(100%);
+}
+
+/* normal */
+.normal {
+  background-image: url('/normal.webp');
+}
+
+.normalActive {
+  background-color: #bacce7;
+  box-shadow: 0 0 20px #bacce7;
+}
+
+/* grumpy */
+.grumpy {
+  background-image: url('/grumpy.webp');
+}
+
+.grumpyActive {
+  background-color: #cfc2e3;
+  box-shadow: 0 0 20px #cfc2e3;
+}
+
+/*  ashamed */
+.ashamed {
+  background-image: url('/ashamed.webp');
+}
+
+.ashamedActive {
+  background-color: #f6aeba;
+  box-shadow: 0 0 20px #f6aeba;
+}
+
+/* smile */
+.smile {
+  background-image: url('/smile.webp');
+}
+
+.smileActive {
+  background-color: #fcc4a3;
+  box-shadow: 0 0 20px #fcc4a3;
+}
