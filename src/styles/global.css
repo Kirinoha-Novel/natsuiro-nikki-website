@@ -45,5 +45,5 @@ body {
 }
 
 *::selection {
-  color: var(--background-color);
+  background-color: #fecf81;
 }
