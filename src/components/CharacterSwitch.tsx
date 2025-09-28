@@ -29,8 +29,8 @@ export const CharacterSwitch: FC = () => {
           <h1 className={styles.title}>
             {character === 'stella' ? (
               <>
-                <span>シェフェール・</span>
-                <span>ステラ</span>
+                <span className={styles.lineBreak}>シェフェール・</span>
+                <span className={styles.lineBreak}>ステラ</span>
               </>
             ) : (
               <>千ヶ崎&emsp;蓮</>
