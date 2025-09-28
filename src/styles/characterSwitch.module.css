@@ -118,8 +118,19 @@
 }
 
 .title {
-  font-size: var(--text-4xl);
   color: var(--note-font-color);
+}
+
+@media screen and (max-width: 380px) {
+  .title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media screen and (min-width: 381px) {
+  .title {
+    font-size: var(--text-4xl);
+  }
 }
 
 .description {
@@ -128,8 +139,19 @@
 }
 
 .phrase {
-  font-size: var(--text-3xl);
   color: var(--note-font-color);
+}
+
+@media screen and (max-width: 700px) {
+  .phrase {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .phrase {
+    font-size: var(--text-3xl);
+  }
 }
 
 .stellaPhrase {
