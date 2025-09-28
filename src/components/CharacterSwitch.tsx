@@ -18,7 +18,7 @@ export const CharacterSwitch: FC = () => {
           onClick={() => setCharacter('stella')}
         ></button>
         <div className={styles.separate}>/</div>
-        <button className={`${styles.characterSwitchButton} ${styles.renButton}`} onClick={() => setCharacter('ren')}>
+        <button className={styles.characterSwitchButton} onClick={() => setCharacter('ren')}>
           蓮
         </button>
       </div>
