@@ -10,22 +10,63 @@ export const CharacterSwitch: FC = () => {
 
   return (
     <>
+      {/* character switch button */}
+      {/* * character switch button ************************** */}
       <div className={styles.characterSwitchButtonBox}>
         <button
           className={`${styles.characterSwitchButton} ${styles.stellaButton}`}
           onClick={() => setCharacter('stella')}
         ></button>
-        <p className={styles.separate}>/</p>
+        <div className={styles.separate}>/</div>
         <button className={`${styles.characterSwitchButton} ${styles.renButton}`} onClick={() => setCharacter('ren')}>
           蓮
         </button>
       </div>
+      {/* * character switch button ************************** */}
       <div className={`${styles.container} ${character === 'stella' ? styles.stellaContainer : styles.renContainer}`}>
-        {/* description */}
-        {/* *************************** */}
-        <div>
+        <div className={styles.descriptionBox}>
+          {/** description **/}
           <h1 className={styles.title}>{character === 'stella' ? 'シェフェール・ステラ' : '千ヶ崎　蓮'}</h1>
           <br />
+          {/** mobile character image **/}
+          {/* * mobile character image ************************** */}
+          {character === 'stella' ? (
+            <img
+              className={styles.mobileCharacterImage}
+              src={`/${emotion}.webp`}
+              width={720}
+              height={1918}
+              alt="ステラ"
+            />
+          ) : (
+            <></>
+          )}
+          {/* * mobile character image ************************** */}
+          {/* mobile emotion button */}
+          {/* * mobile emotion button ************************** */}
+          {character === 'stella' ? (
+            <div className={styles.mobileEmotionButtonBox}>
+              <button
+                className={`${styles.emotionButton} ${styles.normal} ${emotion === 'normal' ? styles.normalActive : styles.inActive}`}
+                onClick={() => setEmotion('normal')}
+              ></button>
+              <button
+                className={`${styles.emotionButton} ${styles.grumpy} ${emotion === 'grumpy' ? styles.grumpyActive : styles.inActive}`}
+                onClick={() => setEmotion('grumpy')}
+              ></button>
+              <button
+                className={`${styles.emotionButton} ${styles.ashamed} ${emotion === 'ashamed' ? styles.ashamedActive : styles.inActive}`}
+                onClick={() => setEmotion('ashamed')}
+              ></button>
+              <button
+                className={`${styles.emotionButton} ${styles.smile} ${emotion === 'smile' ? styles.smileActive : styles.inActive}`}
+                onClick={() => setEmotion('smile')}
+              ></button>
+            </div>
+          ) : (
+            <></>
+          )}
+          {/* * mobile emotion button ************************** */}
           <p className={styles.description}>
             年齢 {character === 'stella' ? 19 : 19}歳 / 身長 {character === 'stella' ? 161 : 174}cm
             <br />
@@ -61,49 +102,54 @@ export const CharacterSwitch: FC = () => {
           <br />
           <br />
           <strong className={`${styles.phrase} ${character === 'stella' ? styles.stellaPhrase : styles.renPhrase}`}>
-            {character === 'stella' ? '「ほら！起きなさい！！」' : 'ある夏の夜、僕は空を見上げた。'}
+            {character === 'stella' ? (
+              <>
+                <span className={styles.lineBreak}>「ほら！</span>
+                <span className={styles.lineBreak}>起きなさい！！」</span>
+              </>
+            ) : (
+              <>
+                <span className={styles.lineBreak}>ある夏の夜、</span>
+                <span className={styles.lineBreak}>俺は空を見上げた。</span>
+              </>
+            )}
           </strong>
           <br />
           <br />
           <strong className={`${styles.phrase} ${character === 'stella' ? styles.stellaPhrase : styles.renPhrase}`}>
-            {character === 'stella' ? '「起きないと布団引き剥がしの刑よ！」' : 'きらりと光る流れ星を見た。'}
+            {character === 'stella' ? (
+              <>
+                <span className={styles.lineBreak}>「起きないと</span>
+                <span className={styles.lineBreak}>布団引き剥がし</span>
+                <span className={styles.lineBreak}>の刑よ！」</span>
+              </>
+            ) : (
+              <>
+                <span className={styles.lineBreak}>きらりと光る</span>
+                <span className={styles.lineBreak}>流れ星を見た。</span>
+              </>
+            )}
           </strong>
+          {/* sign image */}
+          {/* * sign image ************************** */}
+          <div className={styles.signBox}>
+            <img className={styles.signImage} src={`/${character}-sign.webp`} width={764} height={259} alt="サイン" />
+          </div>
+          {/* * sign image ************************** */}
         </div>
-        {/* *************************** */}
-        {/* sign image */}
-        {/* *************************** */}
+
+        {/* pc character image */}
+        {/* * pc character image ************************** */}
         {character === 'stella' ? (
-          <div className={styles.stellaSignContainer}>
-            <div className={styles.stellaSignBox}>
-              <img
-                className={styles.stellaSignImage}
-                src={`/stella-sign.webp`}
-                width={1029}
-                height={330}
-                alt="ステラのサイン"
-              />
-            </div>
-          </div>
-        ) : (
-          <div className={styles.renSignContainer}>
-            <div className={styles.renSignBox}>
-              <img className={styles.renSignImage} src={`/ren-sign.webp`} width={764} height={259} alt="蓮のサイン" />
-            </div>
-          </div>
-        )}
-        {/* *************************** */}
-        {/* character image */}
-        {/* *************************** */}
-        {character === 'stella' ? (
-          <img className={styles.characterImage} src={`/${emotion}.webp`} width={720} height={1918} alt="ステラ" />
+          <img className={styles.pcCharacterImage} src={`/${emotion}.webp`} width={720} height={1918} alt="ステラ" />
         ) : (
           <></>
         )}
-        {/* *************************** */}
-        {/* emotion button */}
-        {/* *************************** */}
+        {/* * pc character image ************************** */}
+        {/* pc emotion button */}
+        {/* * pc emotion button ************************** */}
         {character === 'stella' ? (
-          <div className={styles.emotionButtonBox}>
+          <div className={styles.pcEmotionButtonBox}>
             <button
               className={`${styles.emotionButton} ${styles.normal} ${emotion === 'normal' ? styles.normalActive : styles.inActive}`}
               onClick={() => setEmotion('normal')}
@@ -124,7 +170,7 @@ export const CharacterSwitch: FC = () => {
         ) : (
           <></>
         )}
-        {/* *************************** */}
+        {/* * pc emotion button ************************** */}
       </div>
     </>
   );

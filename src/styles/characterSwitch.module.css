@@ -5,8 +5,20 @@
   background-size: 2.2rem 2.2rem;
   background-position: center top;
   display: flex;
-  height: 740px;
-  padding: 50px 100px;
+}
+
+@media screen and (min-width: 1196px) {
+  .container {
+    height: 740px;
+    padding: 50px 100px;
+  }
+}
+
+@media screen and (max-width: 1195px) {
+  .container {
+    height: auto;
+    padding: 50px 30px;
+  }
 }
 
 .stellaContainer {
@@ -48,50 +60,63 @@
   font-size: var(--text-2xl);
 }
 
-/** character image **/
-.characterImage {
+/*** character image ***/
+/** pc character image **/
+.pcCharacterImage {
   width: fit-content;
   height: 100%;
 }
 
-/** sign image **/
-/* stella sign */
-.stellaSignContainer {
-  height: 100%;
-  position: relative;
+@media screen and (max-width: 1195px) {
+  .pcCharacterImage {
+    display: none;
+  }
 }
 
-.stellaSignBox {
-  width: 250px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.stellaSignImage {
+/** mobile character image **/
+.mobileCharacterImage {
+  display: block;
   width: 100%;
+  max-width: 250px;
   height: auto;
+  margin: 0 auto;
 }
 
-/* ren sign */
-.renSignContainer {
-  height: 100%;
-  position: relative;
+@media screen and (min-width: 1196px) {
+  .mobileCharacterImage {
+    display: none;
+  }
+}
+
+/** sign image **/
+.signBox {
+  display: flex;
+  justify-content: flex-end;
   margin: 20px 0 0 0;
 }
 
-.renSignBox {
-  width: 250px;
-  position: absolute;
-  right: 0;
+@media screen and (max-width: 1195px) {
+  .signBox {
+    width: 100%;
+  }
 }
 
-.renSignImage {
+.signImage {
+  display: block;
   width: 100%;
+  max-width: 250px;
   height: auto;
 }
 
 /** description **/
+.lineBreak {
+  display: inline-block;
+}
+
+.descriptionBox {
+  width: 100%;
+}
+
 .title {
   font-size: var(--text-4xl);
   color: var(--note-font-color);
@@ -115,12 +140,33 @@
   background: linear-gradient(transparent 70%, #8266ff65 0%);
 }
 
-/** emotion button **/
-.emotionButtonBox {
+/*** emotion button ***/
+/** mobile emotion button **/
+.mobileEmotionButtonBox {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 40px 0 60px 0;
+}
+
+@media screen and (min-width: 1196px) {
+  .mobileEmotionButtonBox {
+    display: none;
+  }
+}
+
+/** pc emotion button **/
+.pcEmotionButtonBox {
   display: flex;
   gap: 10px;
   flex-direction: column;
   margin: 100px 0 0 30px;
+}
+
+@media screen and (max-width: 1195px) {
+  .pcEmotionButtonBox {
+    display: none;
+  }
 }
 
 .emotionButton {
