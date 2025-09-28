@@ -149,7 +149,6 @@
 }
 
 .phrase {
-  font-size: var(--text-2xl);
   color: var(--note-font-color);
 }
 
@@ -177,7 +176,6 @@
 .mobileEmotionButtonBox {
   display: flex;
   flex-wrap: wrap;
-  /* width: 100%; */
   gap: 10px;
   justify-content: center;
   margin: 40px 0 60px 0;
