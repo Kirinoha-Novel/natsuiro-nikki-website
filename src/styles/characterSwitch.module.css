@@ -176,6 +176,8 @@
 /** mobile emotion button **/
 .mobileEmotionButtonBox {
   display: flex;
+  flex-wrap: wrap;
+  /* width: 100%; */
   gap: 10px;
   justify-content: center;
   margin: 40px 0 60px 0;
