@@ -64,7 +64,7 @@ export const CharacterSwitch: FC = () => {
           ) : null}
           {/* * mobile emotion button ************************** */}
           <p className={styles.description}>
-            年齢 {character === 'stella' ? 19 : 19}歳 / 身長 {character === 'stella' ? 161 : 174}cm
+            年齢 19歳 / 身長 {character === 'stella' ? 161 : 174}cm
             <br />
             <br />
             {character === 'stella' ? (
