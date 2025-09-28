@@ -26,7 +26,16 @@ export const CharacterSwitch: FC = () => {
       <div className={`${styles.container} ${character === 'stella' ? styles.stellaContainer : styles.renContainer}`}>
         <div className={styles.descriptionBox}>
           {/** description **/}
-          <h1 className={styles.title}>{character === 'stella' ? 'シェフェール・ステラ' : '千ヶ崎　蓮'}</h1>
+          <h1 className={styles.title}>
+            {character === 'stella' ? (
+              <>
+                <span>シェフェール・</span>
+                <span>ステラ</span>
+              </>
+            ) : (
+              <>千ヶ崎&emsp;蓮</>
+            )}
+          </h1>
           <br />
           {/** mobile character image **/}
           {/* * mobile character image ************************** */}
