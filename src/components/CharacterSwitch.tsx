@@ -125,8 +125,7 @@ export const CharacterSwitch: FC = () => {
             {character === 'stella' ? (
               <>
                 <span className={styles.lineBreak}>「起きないと</span>
-                <span className={styles.lineBreak}>布団引き剥がし</span>
-                <span className={styles.lineBreak}>の刑よ！」</span>
+                <span className={styles.lineBreak}>叩き起こすわよ！」</span>
               </>
             ) : (
               <>
