@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--text-xl);
 }
 
 .dash {
@@ -31,7 +32,6 @@
 .pcView {
   padding: 0 10px;
   line-height: 2.5;
-  font-size: var(--text-xl);
   color: var(--note-font-color);
   writing-mode: vertical-rl;
 }

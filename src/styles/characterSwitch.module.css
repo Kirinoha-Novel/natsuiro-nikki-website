@@ -139,19 +139,8 @@
 }
 
 .phrase {
+  font-size: var(--text-2xl);
   color: var(--note-font-color);
-}
-
-@media screen and (max-width: 700px) {
-  .phrase {
-    font-size: var(--text-2xl);
-  }
-}
-
-@media screen and (min-width: 700px) {
-  .phrase {
-    font-size: var(--text-3xl);
-  }
 }
 
 .stellaPhrase {
@@ -193,7 +182,7 @@
 
 .emotionButton {
   background-position: top;
-  background-size: 200%;
+  background-size: 150%;
   background-repeat: no-repeat;
   display: block;
   width: 64px;
