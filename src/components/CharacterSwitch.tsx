@@ -38,9 +38,7 @@ export const CharacterSwitch: FC = () => {
               height={1918}
               alt="ステラ"
             />
-          ) : (
-            <></>
-          )}
+          ) : null}
           {/* * mobile character image ************************** */}
           {/* mobile emotion button */}
           {/* * mobile emotion button ************************** */}
@@ -63,9 +61,7 @@ export const CharacterSwitch: FC = () => {
                 onClick={() => setEmotion('smile')}
               ></button>
             </div>
-          ) : (
-            <></>
-          )}
+          ) : null}
           {/* * mobile emotion button ************************** */}
           <p className={styles.description}>
             年齢 {character === 'stella' ? 19 : 19}歳 / 身長 {character === 'stella' ? 161 : 174}cm
@@ -142,9 +138,7 @@ export const CharacterSwitch: FC = () => {
         {/* * pc character image ************************** */}
         {character === 'stella' ? (
           <img className={styles.pcCharacterImage} src={`/${emotion}.webp`} width={720} height={1918} alt="ステラ" />
-        ) : (
-          <></>
-        )}
+        ) : null}
         {/* * pc character image ************************** */}
         {/* pc emotion button */}
         {/* * pc emotion button ************************** */}
@@ -167,9 +161,7 @@ export const CharacterSwitch: FC = () => {
               onClick={() => setEmotion('smile')}
             ></button>
           </div>
-        ) : (
-          <></>
-        )}
+        ) : null}
         {/* * pc emotion button ************************** */}
       </div>
     </>
