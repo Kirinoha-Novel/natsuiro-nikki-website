@@ -135,12 +135,33 @@
 
 .description {
   font-size: var(--text-xl);
-  color: var(--note-font-color);
+}
+
+@media screen and (min-width: 470px) {
+  .description {
+    font-size: var(--text-xl);
+  }
+}
+@media screen and (max-width: 469px) {
+  .description {
+    font-size: var(--text-base);
+  }
 }
 
 .phrase {
   font-size: var(--text-2xl);
   color: var(--note-font-color);
+}
+
+@media screen and (min-width: 470px) {
+  .phrase {
+    font-size: var(--text-2xl);
+  }
+}
+@media screen and (max-width: 469px) {
+  .phrase {
+    font-size: var(--text-xl);
+  }
 }
 
 .stellaPhrase {

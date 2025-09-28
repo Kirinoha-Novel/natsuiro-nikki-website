@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--text-xl);
 }
 
 .dash {
@@ -34,6 +33,7 @@
   line-height: 2.5;
   color: var(--note-font-color);
   writing-mode: vertical-rl;
+  font-size: var(--text-xl);
 }
 
 /* Mobile Version */
@@ -52,7 +52,7 @@
 }
 @media screen and (max-width: 469px) {
   .mobileView {
-    font-size: var(--small-font-size);
+    font-size: var(--text-base);
   }
 }
 
