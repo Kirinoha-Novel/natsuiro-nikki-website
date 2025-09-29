@@ -1,0 +1,259 @@
+.container {
+  background-image:
+    linear-gradient(var(--note-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
+  background-size: 2.2rem 2.2rem;
+  background-position: center top;
+  display: flex;
+}
+
+@media screen and (min-width: 1196px) {
+  .container {
+    height: 740px;
+    padding: 50px 100px;
+  }
+}
+
+@media screen and (max-width: 1195px) {
+  .container {
+    height: auto;
+    padding: 50px 30px;
+  }
+}
+
+.stellaContainer {
+  flex-direction: row;
+}
+
+.renContainer {
+  flex-direction: column;
+}
+
+/** character switch button **/
+.characterSwitchButtonBox {
+  display: flex;
+  gap: 15px;
+  margin: 0 auto 20px auto;
+  width: fit-content;
+}
+
+.characterSwitchButton {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-2xl);
+}
+
+.stellaButton {
+  background-image: url('/normal.webp');
+  background-position: top;
+  background-size: 150%;
+  background-repeat: no-repeat;
+}
+
+.separate {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-2xl);
+}
+
+/*** character image ***/
+/** pc character image **/
+.pcCharacterImage {
+  width: fit-content;
+  height: 100%;
+}
+
+@media screen and (max-width: 1195px) {
+  .pcCharacterImage {
+    display: none;
+  }
+}
+
+/** mobile character image **/
+.mobileCharacterImage {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1196px) {
+  .mobileCharacterImage {
+    display: none;
+  }
+}
+
+/** sign image **/
+.signBox {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0 0 0;
+}
+
+@media screen and (max-width: 1195px) {
+  .signBox {
+    width: 100%;
+  }
+}
+
+.signImage {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
+/** description **/
+.lineBreak {
+  display: inline-block;
+}
+
+.descriptionBox {
+  width: 100%;
+}
+
+.title {
+  color: var(--note-font-color);
+}
+
+@media screen and (max-width: 470px) {
+  .title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media screen and (min-width: 469px) {
+  .title {
+    font-size: var(--text-4xl);
+  }
+}
+
+.description {
+  font-size: var(--text-xl);
+}
+
+@media screen and (min-width: 470px) {
+  .description {
+    font-size: var(--text-xl);
+  }
+}
+@media screen and (max-width: 469px) {
+  .description {
+    font-size: var(--text-base);
+  }
+}
+
+.phrase {
+  color: var(--note-font-color);
+}
+
+@media screen and (min-width: 470px) {
+  .phrase {
+    font-size: var(--text-2xl);
+  }
+}
+@media screen and (max-width: 469px) {
+  .phrase {
+    font-size: var(--text-xl);
+  }
+}
+
+.stellaPhrase {
+  background: linear-gradient(transparent 70%, #66c7ff65 0%);
+}
+
+.renPhrase {
+  background: linear-gradient(transparent 70%, #8266ff65 0%);
+}
+
+/*** emotion button ***/
+/** mobile emotion button **/
+.mobileEmotionButtonBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 40px 0 60px 0;
+}
+
+@media screen and (min-width: 1196px) {
+  .mobileEmotionButtonBox {
+    display: none;
+  }
+}
+
+/** pc emotion button **/
+.pcEmotionButtonBox {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin: 100px 0 0 30px;
+}
+
+@media screen and (max-width: 1195px) {
+  .pcEmotionButtonBox {
+    display: none;
+  }
+}
+
+.emotionButton {
+  background-position: top;
+  background-size: 150%;
+  background-repeat: no-repeat;
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.inActive {
+  background-color: #a8a8a8;
+  filter: grayscale(100%);
+}
+
+/* normal */
+.normal {
+  background-image: url('/normal.webp');
+}
+
+.normalActive {
+  background-color: #bacce7;
+  box-shadow: 0 0 20px #bacce7;
+}
+
+/* grumpy */
+.grumpy {
+  background-image: url('/grumpy.webp');
+}
+
+.grumpyActive {
+  background-color: #cfc2e3;
+  box-shadow: 0 0 20px #cfc2e3;
+}
+
+/*  ashamed */
+.ashamed {
+  background-image: url('/ashamed.webp');
+}
+
+.ashamedActive {
+  background-color: #f6aeba;
+  box-shadow: 0 0 20px #f6aeba;
+}
+
+/* smile */
+.smile {
+  background-image: url('/smile.webp');
+}
+
+.smileActive {
+  background-color: #fcc4a3;
+  box-shadow: 0 0 20px #fcc4a3;
+}

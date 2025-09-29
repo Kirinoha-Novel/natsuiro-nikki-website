@@ -1,7 +1,9 @@
 ---
 import Title from '../components/utils/Title.astro';
+import { CharacterSwitch } from '../components/CharacterSwitch';
 ---
 
 <div class="section">
   <Title id="character" title="【登場人物】" />
+  <CharacterSwitch client:load />
 </div>

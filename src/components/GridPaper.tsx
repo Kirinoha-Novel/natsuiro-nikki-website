@@ -3,12 +3,13 @@ import styles from '../styles/grid-paper.module.css';
 
 const GridPaper: FC = () => {
   const stellaImage = '/stella.webp';
-  const renImage = '/ren.webp';
+  const renImage = '/ren-sign.webp';
 
   const isMorning = useRef<boolean>(false);
 
   useEffect(() => {
     const hour = new Date().getHours();
+    console.log(`Time now: ${hour} o'clock`);
     /*
       5:00 ~ 9:00 -> stella
       other times -> ren
@@ -39,7 +40,7 @@ const GridPaper: FC = () => {
           <br />
           なんでも願いを叶えてくれるという
           <br />
-          期限付きの"天使"ステラ。
+          期限付きの天使ステラ。
           <br />
           願いのない蓮は、本当の願いを見つけるまで
           <br />
@@ -77,7 +78,7 @@ const GridPaper: FC = () => {
           <br />
           なんでも願いを叶えてくれるという
           <br />
-          期限付きの"天使"ステラ。
+          期限付きの天使ステラ。
           <br />
           <br />
           願いのない蓮は、
