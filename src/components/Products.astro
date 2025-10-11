@@ -1,0 +1,73 @@
+---
+import Title from '../components/utils/Title.astro';
+import SubTitle from './utils/SubTitle.astro';
+---
+
+<div class="section">
+  <Title id="products" title="【製品情報】" />
+  <SubTitle />
+  <div class="grid-paper">
+    <div class="box">
+      <p class="label">タイトル</p>
+      <h2 class="title">なついろにっき。</h2>
+      <p class="label">推奨プレイ環境</p>
+      <div class="description">
+        <div class="left-box">
+          <p class="spec">&bullet;&ensp;ジャンル</p>
+          <p class="spec">&bullet;&ensp;レーティング</p>
+          <p class="spec">&bullet;&ensp;対応OS</p>
+          <p class="spec">&bullet;&ensp;対応CPU</p>
+          <p class="spec">&bullet;&ensp;推奨メモリ容量</p>
+          <p class="spec">&bullet;&ensp;推奨空き容量</p>
+        </div>
+        <div class="right-box">
+          <p class="spec">少女と少し不思議な一夏を過ごす恋愛ADV</p>
+          <p class="spec">全年齢対象</p>
+          <p class="spec">NixOS (Windowsでは動作しません。)</p>
+          <p class="spec">intel Xeon Platinum 8380以上</p>
+          <p class="spec">128GB以上</p>
+          <p class="spec">16TB以上</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .grid-paper {
+    background-image:
+      linear-gradient(var(--note-line-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
+    background-size: 2.2rem 2.2rem;
+    background-position: center top;
+    display: flex;
+  }
+  .box {
+    text-align: center;
+    margin: 50px auto;
+  }
+  .label {
+    font-size: var(--text-xl);
+    margin: 0 0 20px 0;
+  }
+  .title {
+    font-size: var(--text-3xl);
+    margin: 0 0 80px 0;
+  }
+
+  .description {
+    display: flex;
+    margin: 10px 0 0 0;
+  }
+  .left-box {
+    text-align: left;
+    margin: 0 20px 0 0;
+  }
+  .right-box {
+    text-align: left;
+  }
+  .spec {
+    font-size: var(--text-xl);
+    margin: 10px 0;
+  }
+</style>

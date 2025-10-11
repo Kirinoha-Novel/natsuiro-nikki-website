@@ -29,11 +29,23 @@
   flex-direction: column;
 }
 
+/** subtitle **/
+.subTitle {
+  --side-space: 40px;
+  width: calc(100% - var(--side-space));
+}
+
+.number {
+  font-size: var(--text-base);
+  color: var(--note-line-color);
+  text-align: right;
+}
+
 /** character switch button **/
 .characterSwitchButtonBox {
   display: flex;
   gap: 15px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
   width: fit-content;
 }
 

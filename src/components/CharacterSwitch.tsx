@@ -22,6 +22,9 @@ export const CharacterSwitch: FC = () => {
           蓮
         </button>
       </div>
+      <div className={styles.subTitle}>
+        <p className={styles.number}>No.</p>
+      </div>
       {/* * character switch button ************************** */}
       <div className={`${styles.container} ${character === 'stella' ? styles.stellaContainer : styles.renContainer}`}>
         <div className={styles.descriptionBox}>
