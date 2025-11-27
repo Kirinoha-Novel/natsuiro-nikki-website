@@ -4,29 +4,24 @@ import SubTitle from './utils/SubTitle.astro';
 ---
 
 <div class="section">
-  <Title id="products" title="【製品情報】" />
+  <Title id="products" title="【体験版情報】" />
   <SubTitle />
   <div class="grid-paper">
     <div class="box">
       <p class="label">タイトル</p>
       <h2 class="title">なついろにっき。</h2>
-      <p class="label">推奨プレイ環境</p>
-      <div class="description">
-        <div class="left-box">
-          <p class="spec">&bullet;&ensp;ジャンル</p>
-          <p class="spec">&bullet;&ensp;レーティング</p>
-          <p class="spec">&bullet;&ensp;対応OS</p>
-          <p class="spec">&bullet;&ensp;対応CPU</p>
-          <p class="spec">&bullet;&ensp;推奨メモリ容量</p>
-          <p class="spec">&bullet;&ensp;推奨空き容量</p>
+      <p class="label">ジャンル</p>
+      <h3 class="subtitle"><span>少女と少し不思議な</span><span>一夏を過ごす恋愛ADV</span></h3>
+      <p class="label">販売価格</p>
+      <h3 class="subtitle">無料</h3>
+      <div class="block">
+        <div class="item">
+          <p class="label">レーティング</p>
+          <h3 class="subtitle">全年齢対象</h3>
         </div>
-        <div class="right-box">
-          <p class="spec">少女と少し不思議な一夏を過ごす恋愛ADV</p>
-          <p class="spec">全年齢対象</p>
-          <p class="spec">NixOS (Windowsでは動作しません。)</p>
-          <p class="spec">intel Xeon Platinum 8380以上</p>
-          <p class="spec">128GB以上</p>
-          <p class="spec">16TB以上</p>
+        <div class="item">
+          <p class="label">配布形態</p>
+          <h3 class="subtitle">DLカード</h3>
         </div>
       </div>
     </div>
@@ -41,6 +36,7 @@ import SubTitle from './utils/SubTitle.astro';
     background-size: 2.2rem 2.2rem;
     background-position: center top;
     display: flex;
+    padding: 0 30px;
   }
   .box {
     text-align: center;
@@ -51,23 +47,30 @@ import SubTitle from './utils/SubTitle.astro';
     margin: 0 0 20px 0;
   }
   .title {
+    width: fit-content;
     font-size: var(--text-3xl);
-    margin: 0 0 80px 0;
+    margin: 0 auto 80px auto;
+    padding: 0 15px;
+    background: linear-gradient(transparent 70%, #66c7ff65 0%);
+  }
+  .subtitle {
+    width: fit-content;
+    font-size: var(--text-2xl);
+    margin: 0 auto 80px auto;
+    padding: 0 15px;
+    background: linear-gradient(transparent 70%, #66c7ff65 0%);
+  }
+  span {
+    display: inline-block;
   }
 
-  .description {
+  .block {
     display: flex;
-    margin: 10px 0 0 0;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .left-box {
-    text-align: left;
-    margin: 0 20px 0 0;
-  }
-  .right-box {
-    text-align: left;
-  }
-  .spec {
-    font-size: var(--text-xl);
-    margin: 10px 0;
+  .item {
+    width: 165px;
+    margin: 0 40px;
   }
 </style>
