@@ -11,7 +11,9 @@ import SubTitle from './utils/SubTitle.astro';
       <p class="label">タイトル</p>
       <h2 class="title">なついろにっき。</h2>
       <p class="label">ジャンル</p>
-      <h3 class="subtitle"><span>少女と少し不思議な</span><span>一夏を過ごす恋愛ADV</span></h3>
+      <h3 class="long-subtitle">
+        <span class="under-line">少女と少し不思議な</span><span class="under-line">一夏を過ごす恋愛ADV</span>
+      </h3>
       <p class="label">販売価格</p>
       <h3 class="subtitle">無料</h3>
       <div class="block">
@@ -42,24 +44,81 @@ import SubTitle from './utils/SubTitle.astro';
     text-align: center;
     margin: 50px auto;
   }
+
   .label {
     font-size: var(--text-xl);
     margin: 0 0 20px 0;
   }
   .title {
     width: fit-content;
-    font-size: var(--text-3xl);
-    margin: 0 auto 80px auto;
     padding: 0 15px;
-    background: linear-gradient(transparent 70%, #66c7ff65 0%);
   }
   .subtitle {
     width: fit-content;
-    font-size: var(--text-2xl);
-    margin: 0 auto 80px auto;
     padding: 0 15px;
-    background: linear-gradient(transparent 70%, #66c7ff65 0%);
   }
+  .long-subtitle {
+    width: fit-content;
+    padding: 0 15px;
+  }
+
+  @media screen and (min-width: 700px) {
+    .title {
+      font-size: var(--text-3xl);
+      margin: 0 auto 80px auto;
+      background: linear-gradient(transparent 70%, #66c7ff65 0%);
+    }
+    .subtitle {
+      font-size: var(--text-2xl);
+      margin: 0 auto 80px auto;
+      background: linear-gradient(transparent 70%, #66c7ff65 0%);
+    }
+    .long-subtitle {
+      font-size: var(--text-2xl);
+      margin: 0 auto 80px auto;
+      background: linear-gradient(transparent 70%, #66c7ff65 0%);
+    }
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 699px) {
+    .title {
+      font-size: var(--text-xl);
+      margin: 0 auto 80px auto;
+      background: linear-gradient(transparent 70%, #66c7ff65 0%);
+    }
+    .subtitle {
+      font-size: var(--text-xl);
+      margin: 0 auto 80px auto;
+      background: linear-gradient(transparent 70%, #66c7ff65 0%);
+    }
+    .long-subtitle {
+      font-size: var(--text-xl);
+      margin: 0 auto 80px auto;
+      background: linear-gradient(transparent 70%, #66c7ff65 0%);
+    }
+  }
+
+  @media screen and (max-width: 559px) {
+    .title {
+      font-size: var(--text-2xl);
+      margin: 0 auto 30px auto;
+      background: linear-gradient(transparent 75%, #66c7ff65 0%);
+    }
+    .subtitle {
+      font-size: var(--text-xl);
+      margin: 0 auto 30px auto;
+      background: linear-gradient(transparent 75%, #66c7ff65 0%);
+    }
+    .long-subtitle {
+      font-size: var(--text-xl);
+      margin: 0 auto 30px auto;
+      width: 250px;
+    }
+    .under-line {
+      background: linear-gradient(transparent 75%, #66c7ff65 0%);
+    }
+  }
+
   span {
     display: inline-block;
   }
