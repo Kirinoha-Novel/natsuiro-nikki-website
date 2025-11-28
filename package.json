@@ -17,6 +17,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.6.0",
     "@types/js-cookie": "^3.0.6",
     "astro": "^5.10.1",
     "js-cookie": "^3.0.5",

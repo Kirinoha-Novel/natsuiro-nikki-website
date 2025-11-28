@@ -1,27 +1,16 @@
 ---
 import Title from '../components/utils/Title.astro';
+import SubTitle from './utils/SubTitle.astro';
 import NewsLi from '../components/utils/NewsLi.astro';
+import { infoArray } from '../news';
 ---
 
 <div class="section">
   <Title id="info" title="【お知らせ】" />
+  <SubTitle />
   <div class="grid-paper">
     <ul>
-      <NewsLi
-        url="https://x.com/kirinohanovel/status/1962108105124360515"
-        date="2025年8月31日"
-        title="ティザーサイト公開"
-      />
-      <NewsLi
-        url="https://x.com/kirinohanovel/status/1962108103618633751"
-        date="2025年8月31日"
-        title="公式YouTubeチャンネル開設"
-      />
-      <NewsLi
-        url="https://x.com/kirinohanovel/status/1959571641484128619"
-        date="2025年8月24日"
-        title="なついろにっき。のキービジュアル公開"
-      />
+      {infoArray.map((info) => <NewsLi url={info.url} date={info.date} title={info.title} />)}
     </ul>
   </div>
 </div>

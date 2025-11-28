@@ -8,6 +8,7 @@ body {
   --note-line-color: #e0d9c4;
   --background-color: #fffbf2;
 
+  --title-font-color: #8c7851;
   --title-font-size: clamp(2rem, 6cqw, 2.6rem);
 
   --text-xs: calc(1rem * 8 / 10);
