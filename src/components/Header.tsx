@@ -7,6 +7,7 @@ const CONTENT_LINKS: ContentLink[] = [
   { id: 'summary', label: 'あらすじ' },
   { id: 'character', label: '登場人物' },
   { id: 'video', label: '動画' },
+  { id: 'product', label: '体験版情報' },
 ];
 
 export const Header: FC = () => {
