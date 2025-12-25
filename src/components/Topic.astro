@@ -1,0 +1,53 @@
+---
+import Title from '../components/utils/Title.astro';
+import SubTitle from './utils/SubTitle.astro';
+---
+
+<div class="section">
+  <Title id="topic" title="【トピック】" />
+  <SubTitle />
+  <div class="grid-paper">
+    <div class="box">
+      <p class="description">
+        コミックマーケット C107の「2日目 (2025年12月31日 水曜日)」 に出展いたします。 場所は「南地区 Lブロック -
+        21b」です。新作のゲームの体験版の紹介やグッズの販売を予定しておりますので、 ぜひお立ち寄りください！
+      </p>
+      <a href="https://kirinohanovel.com/c107" class="link" rel="noopener noreferrer" aria-label="コミックマーケット C107 の特設サイト（外部サイト）へのリンク">コミックマーケット C107 特設サイトはこちら！</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .grid-paper {
+    background-image:
+      linear-gradient(var(--note-line-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
+    background-size: 2.2rem 2.2rem;
+    background-position: center top;
+    display: flex;
+    padding: 0 30px;
+  }
+  .box {
+    text-align: center;
+    margin: 50px auto;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .description {
+    color: var(--note-font-color);
+    font-size: var(--text-xl);
+  }
+
+  .link {
+    width: fit-content;
+    padding: 1.5rem;
+    margin: 60px auto 0px auto;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    color: var(--note-font-color);
+    font-size: var(--text-xl);
+    background-color: #d5daff;
+  }
+</style>
