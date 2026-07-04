@@ -1,12 +1,12 @@
-import { useState, type FC } from 'react';
-import styles from '../styles/characterSwitch.module.css';
+import { useState, type FC } from "react";
+import styles from "../styles/characterSwitch.module.css";
 
-type CharacterType = 'stella' | 'ren';
-type EmotionType = 'normal' | 'grumpy' | 'ashamed' | 'smile';
+type CharacterType = "stella" | "ren";
+type EmotionType = "normal" | "grumpy" | "ashamed" | "smile";
 
 export const CharacterSwitch: FC = () => {
-  const [emotion, setEmotion] = useState<EmotionType>('normal');
-  const [character, setCharacter] = useState<CharacterType>('stella');
+  const [emotion, setEmotion] = useState<EmotionType>("normal");
+  const [character, setCharacter] = useState<CharacterType>("stella");
 
   return (
     <>
@@ -15,10 +15,10 @@ export const CharacterSwitch: FC = () => {
       <div className={styles.characterSwitchButtonBox}>
         <button
           className={`${styles.characterSwitchButton} ${styles.stellaButton}`}
-          onClick={() => setCharacter('stella')}
+          onClick={() => setCharacter("stella")}
         ></button>
         <div className={styles.separate}>/</div>
-        <button className={styles.characterSwitchButton} onClick={() => setCharacter('ren')}>
+        <button className={styles.characterSwitchButton} onClick={() => setCharacter("ren")}>
           蓮
         </button>
       </div>
@@ -26,11 +26,13 @@ export const CharacterSwitch: FC = () => {
         <p className={styles.number}>No.</p>
       </div>
       {/* * character switch button ************************** */}
-      <div className={`${styles.container} ${character === 'stella' ? styles.stellaContainer : styles.renContainer}`}>
+      <div
+        className={`${styles.container} ${character === "stella" ? styles.stellaContainer : styles.renContainer}`}
+      >
         <div className={styles.descriptionBox}>
           {/** description **/}
           <h1 className={styles.title}>
-            {character === 'stella' ? (
+            {character === "stella" ? (
               <>
                 <span className={styles.lineBreak}>シェフェール・</span>
                 <span className={styles.lineBreak}>ステラ</span>
@@ -42,7 +44,7 @@ export const CharacterSwitch: FC = () => {
           <br />
           {/** mobile character image **/}
           {/* * mobile character image ************************** */}
-          {character === 'stella' ? (
+          {character === "stella" ? (
             <img
               className={styles.mobileCharacterImage}
               src={`/${emotion}.webp`}
@@ -54,66 +56,67 @@ export const CharacterSwitch: FC = () => {
           {/* * mobile character image ************************** */}
           {/* mobile emotion button */}
           {/* * mobile emotion button ************************** */}
-          {character === 'stella' ? (
+          {character === "stella" ? (
             <div className={styles.mobileEmotionButtonBox}>
               <button
-                className={`${styles.emotionButton} ${styles.normal} ${emotion === 'normal' ? styles.normalActive : styles.inActive}`}
-                onClick={() => setEmotion('normal')}
+                className={`${styles.emotionButton} ${styles.normal} ${emotion === "normal" ? styles.normalActive : styles.inActive}`}
+                onClick={() => setEmotion("normal")}
               ></button>
               <button
-                className={`${styles.emotionButton} ${styles.grumpy} ${emotion === 'grumpy' ? styles.grumpyActive : styles.inActive}`}
-                onClick={() => setEmotion('grumpy')}
+                className={`${styles.emotionButton} ${styles.grumpy} ${emotion === "grumpy" ? styles.grumpyActive : styles.inActive}`}
+                onClick={() => setEmotion("grumpy")}
               ></button>
               <button
-                className={`${styles.emotionButton} ${styles.ashamed} ${emotion === 'ashamed' ? styles.ashamedActive : styles.inActive}`}
-                onClick={() => setEmotion('ashamed')}
+                className={`${styles.emotionButton} ${styles.ashamed} ${emotion === "ashamed" ? styles.ashamedActive : styles.inActive}`}
+                onClick={() => setEmotion("ashamed")}
               ></button>
               <button
-                className={`${styles.emotionButton} ${styles.smile} ${emotion === 'smile' ? styles.smileActive : styles.inActive}`}
-                onClick={() => setEmotion('smile')}
+                className={`${styles.emotionButton} ${styles.smile} ${emotion === "smile" ? styles.smileActive : styles.inActive}`}
+                onClick={() => setEmotion("smile")}
               ></button>
             </div>
           ) : null}
           {/* * mobile emotion button ************************** */}
           <p className={styles.description}>
-            年齢 19歳 / 身長 {character === 'stella' ? 161 : 174}cm / 体重 {character === 'stella' ? '???' : '57kg'}
+            年齢 19歳 / 身長 {character === "stella" ? 161 : 174}cm / 体重{" "}
+            {character === "stella" ? "???" : "57kg"}
             <br />
             <br />
-            {character === 'stella' ? (
+            {character === "stella" ? (
               <>
-                流れ星を司る天使の女の子。
+                流れ星を司るエリート天使の女の子。
                 <br />
-                星を空に振らせて人間の願いを感じとり、その願いを叶えることができる。
+                天界からの使命を受けて人間界で7日間、
                 <br />
-                蓮が真の願いを見つけるまでアラーム係をすることになった。
+                千ヶ崎蓮のアラーム係をすることになった。
                 <br />
-                性格は、しっかり者で世話焼き。
+                性格は非常にしっかり者でスパルタ。
+                <br />
+                一方で世話焼きな一面もある。
                 <br />
                 モットーは「早寝早起き朝ごはん」。
               </>
             ) : (
               <>
-                筑田大学の理学部に通う大学2年生で、本作の主人公。
+                某TKB大学に通う大学2年生で本作の主人公。
                 <br />
-                大学入学後、目標を見失って生活が崩壊。
+                怠惰な生活を送っていたが、
                 <br />
-                留年の危機にまで陥ってしまう。
+                ステラと出会い一気に生活が急変。
                 <br />
-                そのせいなのかこれといった願望がなく、日々を無気力に過ごしている。
-                <br />
-                現在はしてはいないものの、料理が得意。
-                <br />
-                おとなしい妹がいる。
+                毎朝早起きを迫られることになる。
               </>
             )}
           </p>
           <br />
           <br />
-          <strong className={`${styles.phrase} ${character === 'stella' ? styles.stellaPhrase : styles.renPhrase}`}>
-            {character === 'stella' ? (
+          <strong
+            className={`${styles.phrase} ${character === "stella" ? styles.stellaPhrase : styles.renPhrase}`}
+          >
+            {character === "stella" ? (
               <>
-                <span className={styles.lineBreak}>「ほら！</span>
-                <span className={styles.lineBreak}>起きなさい！！」</span>
+                <span className={styles.lineBreak}>「……なによその顔。</span>
+                <span className={styles.lineBreak}>文句あるの？」</span>
               </>
             ) : (
               <>
@@ -124,11 +127,13 @@ export const CharacterSwitch: FC = () => {
           </strong>
           <br />
           <br />
-          <strong className={`${styles.phrase} ${character === 'stella' ? styles.stellaPhrase : styles.renPhrase}`}>
-            {character === 'stella' ? (
+          <strong
+            className={`${styles.phrase} ${character === "stella" ? styles.stellaPhrase : styles.renPhrase}`}
+          >
+            {character === "stella" ? (
               <>
-                <span className={styles.lineBreak}>「起きないと</span>
-                <span className={styles.lineBreak}>叩き起こすわよ！」</span>
+                <span className={styles.lineBreak}>「ないならよろしい。</span>
+                <span className={styles.lineBreak}>また明日」</span>
               </>
             ) : (
               <>
@@ -140,36 +145,48 @@ export const CharacterSwitch: FC = () => {
           {/* sign image */}
           {/* * sign image ************************** */}
           <div className={styles.signBox}>
-            <img className={styles.signImage} src={`/${character}-sign.webp`} width={764} height={259} alt="サイン" />
+            <img
+              className={styles.signImage}
+              src={`/${character}-sign.webp`}
+              width={764}
+              height={259}
+              alt="サイン"
+            />
           </div>
           {/* * sign image ************************** */}
         </div>
 
         {/* pc character image */}
         {/* * pc character image ************************** */}
-        {character === 'stella' ? (
-          <img className={styles.pcCharacterImage} src={`/${emotion}.webp`} width={720} height={1918} alt="ステラ" />
+        {character === "stella" ? (
+          <img
+            className={styles.pcCharacterImage}
+            src={`/${emotion}.webp`}
+            width={720}
+            height={1918}
+            alt="ステラ"
+          />
         ) : null}
         {/* * pc character image ************************** */}
         {/* pc emotion button */}
         {/* * pc emotion button ************************** */}
-        {character === 'stella' ? (
+        {character === "stella" ? (
           <div className={styles.pcEmotionButtonBox}>
             <button
-              className={`${styles.emotionButton} ${styles.normal} ${emotion === 'normal' ? styles.normalActive : styles.inActive}`}
-              onClick={() => setEmotion('normal')}
+              className={`${styles.emotionButton} ${styles.normal} ${emotion === "normal" ? styles.normalActive : styles.inActive}`}
+              onClick={() => setEmotion("normal")}
             ></button>
             <button
-              className={`${styles.emotionButton} ${styles.grumpy} ${emotion === 'grumpy' ? styles.grumpyActive : styles.inActive}`}
-              onClick={() => setEmotion('grumpy')}
+              className={`${styles.emotionButton} ${styles.grumpy} ${emotion === "grumpy" ? styles.grumpyActive : styles.inActive}`}
+              onClick={() => setEmotion("grumpy")}
             ></button>
             <button
-              className={`${styles.emotionButton} ${styles.ashamed} ${emotion === 'ashamed' ? styles.ashamedActive : styles.inActive}`}
-              onClick={() => setEmotion('ashamed')}
+              className={`${styles.emotionButton} ${styles.ashamed} ${emotion === "ashamed" ? styles.ashamedActive : styles.inActive}`}
+              onClick={() => setEmotion("ashamed")}
             ></button>
             <button
-              className={`${styles.emotionButton} ${styles.smile} ${emotion === 'smile' ? styles.smileActive : styles.inActive}`}
-              onClick={() => setEmotion('smile')}
+              className={`${styles.emotionButton} ${styles.smile} ${emotion === "smile" ? styles.smileActive : styles.inActive}`}
+              onClick={() => setEmotion("smile")}
             ></button>
           </div>
         ) : null}
@@ -178,3 +195,4 @@ export const CharacterSwitch: FC = () => {
     </>
   );
 };
+
