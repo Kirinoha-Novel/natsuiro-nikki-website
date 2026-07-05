@@ -57,6 +57,11 @@
   text-align: center;
 }
 
+.mobileView .blankLine {
+  width: auto;
+  height: 1em;
+}
+
 /* Font Size Control */
 @media screen and (min-width: 470px) {
   .mobileView {
