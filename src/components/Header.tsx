@@ -29,10 +29,13 @@ export const Header: FC = () => {
 
   return (
     <>
-      <button
-        className={`${styles.bookmark} ${isOpen ? styles.down : styles.up}`}
-        onClick={toggleMenu}
-      >
+<button
+  type="button"
+  aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
+  aria-expanded={isOpen}
+  className={`${styles.bookmark} ${isOpen ? styles.down : styles.up}`}
+  onClick={toggleMenu}
+>
         <div className={styles.lineBox}>
           <span
             className={`${styles.upperLine} ${isOpen ? styles.upperLineCross : styles.upperLineParallel}`}
