@@ -20,6 +20,7 @@ const GridPaper: FC = () => {
   return (
     <>
       <div className={styles.gridPaper}>
+        {/* PC view */}
         <p className={styles.pcView}>
           {isMorning.current ? (
             <>
@@ -69,51 +70,53 @@ const GridPaper: FC = () => {
           彼女との七日間をどう過ごすかはあなた次第。
           <br />
         </p>
+        {/* Mobile view */}
         <p className={styles.mobileView}>
           {isMorning.current ? (
-            <>「もう、起きる時間よ。」</>
+            <>
+              「天界でトップの成績を収めたこの私に
+              <span className={styles.ellipsis}>……</span>
+              <br />
+              寝坊している大学生を起こせって
+              <span className={styles.ellipsis}>……</span>？」
+            </>
           ) : (
             <>
-              「じゃあ、願いが見つかるまで、
-              <br />
-              毎朝起こしに来るわ。」
+              「<span className={styles.ellipsis}>……</span>
+              明日も来るから。覚悟しておきなさい」
             </>
           )}
           <br />
+          長い長い夏休みは、一人で過ごすには退屈すぎた。
           <br />
-          長い長い夏休みは、
+          某TKB大学に通う大学二年生、千ヶ崎蓮は
           <br />
-          １人で過ごすには退屈すぎた。
+          休みをいいことに日々怠惰な生活を送っていた。
           <br />
-          夢も希望もない留年寸前の
+          <span className={styles.blankLine}></span>
+          そんな時現れたのは<span className={styles.dash}>――</span>
           <br />
-          大学生・蓮のもとに表れたのは、
+          <span className={styles.blankLine}></span>
+          「起きなさい！天界から来たわ！」
           <br />
-          なんでも願いを叶えてくれるという
+          「使命の執行に来たの！」
           <br />
-          期限付きの天使ステラ。
+          <span className={styles.blankLine}></span>
+          天界からやってきた天使、ステラ。
           <br />
+          女神様から遣わされた彼女の使命は
           <br />
-          願いのない蓮は、
+          <span className={styles.blankLine}></span>
+          <span className={styles.emphasis}>七日間千ヶ崎蓮を起こすこと。</span>
           <br />
-          本当の願いを見つけるまで
+          <span className={styles.blankLine}></span>
+          「起きなさいって言ってるの！」
           <br />
-          ステラに毎朝起こしてもらうことに。
+          「任務遂行！片付けるから！」
           <br />
+          とびきり世話焼きでちょっとスパルタな
           <br />
-          二人で過ごす、
-          <br />
-          ちょっと遅れた夏休み。
-          <br />
-          夏休みに終わりが見えても、
-          <br />
-          彼女の手を離せなかった。
-          <br />
-          甘くて、痛くて、
-          <br />
-          やさしい物語の行き先は<span className={styles.dash}>――</span>
-          <br />
-          依存か、自立か、それとも・・・。
+          彼女との七日間をどう過ごすかはあなた次第。
           <br />
         </p>
       </div>
