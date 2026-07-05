@@ -1,9 +1,9 @@
-import { useEffect, useRef, type FC } from 'react';
-import styles from '../styles/grid-paper.module.css';
+import { useEffect, useRef, type FC } from "react";
+import styles from "../styles/grid-paper.module.css";
 
 const GridPaper: FC = () => {
-  const stellaImage = '/stella.webp';
-  const renImage = '/ren-sign.webp';
+  const stellaImage = "/stella.webp";
+  const renImage = "/ren-sign.webp";
 
   const isMorning = useRef<boolean>(false);
 
@@ -22,38 +22,51 @@ const GridPaper: FC = () => {
       <div className={styles.gridPaper}>
         <p className={styles.pcView}>
           {isMorning.current ? (
-            <>「もう、起きる時間よ。」</>
+            <>
+              「天界でトップの成績を収めたこの私に
+              <span className={styles.ellipsis}>︙︙</span>
+              <br />
+              寝坊している大学生を起こせって
+              <span className={styles.ellipsis}>︙︙</span>？」
+            </>
           ) : (
             <>
-              「じゃあ、願いが見つかるまで、
-              <br />
-              毎朝起こしに来るわ。」
+              「<span className={styles.ellipsis}>︙︙</span>
+              明日も来るから。覚悟しておきなさい」
             </>
           )}
           <br />
+          長い長い夏休みは、一人で過ごすには退屈すぎた。
           <br />
-          長い長い夏休みは、１人で過ごすには退屈すぎた。
+          某TKB大学に通う大学二年生、千ヶ崎蓮は
           <br />
-          夢も希望もない留年寸前の
+          休みをいいことに日々怠惰な生活を送っていた。
           <br />
-          大学生・蓮のもとに表れたのは、
+          <span className={styles.blankLine}></span>
+          そんな時現れたのは<span className={styles.dash}>――</span>
           <br />
-          なんでも願いを叶えてくれるという
+          <span className={styles.blankLine}></span>
+          「起きなさい！天界から来たわ！」
           <br />
-          期限付きの天使ステラ。
+          「使命の執行に来たの！」
           <br />
-          願いのない蓮は、本当の願いを見つけるまで
+          <span className={styles.blankLine}></span>
+          天界からやってきた天使、ステラ。
           <br />
-          ステラに毎朝起こしてもらうことに。
+          女神様から遣わされた彼女の使命は
           <br />
+          <span className={styles.dash}>――――</span>
+          &nbsp;
+          <span className={styles.emphasis}>七日間千ヶ崎蓮を起こすこと。</span>
           <br />
-          二人で過ごす、ちょっと遅れた夏休み。
+          <span className={styles.blankLine}></span>
+          「起きなさいって言ってるの！」
           <br />
-          夏休みに終わりが見えても、彼女の手を離せなかった。
+          「任務遂行！片付けるから！」
           <br />
-          甘くて、痛くて、やさしい物語の行き先は<span className={styles.dash}>――</span>
+          とびきり世話焼きでちょっとスパルタな
           <br />
-          依存か、自立か、それとも・・・。
+          彼女との七日間をどう過ごすかはあなた次第。
           <br />
         </p>
         <p className={styles.mobileView}>
@@ -107,7 +120,7 @@ const GridPaper: FC = () => {
       <div className={styles.sign}>
         <img
           src={isMorning.current ? stellaImage : renImage}
-          alt={isMorning.current ? 'ステラのサイン' : '蓮のサイン'}
+          alt={isMorning.current ? "ステラのサイン" : "蓮のサイン"}
           className={styles.signImg}
           width={isMorning.current ? 1029 : 764}
           height={isMorning.current ? 330 : 259}
@@ -118,3 +131,4 @@ const GridPaper: FC = () => {
 };
 
 export { GridPaper };
+
