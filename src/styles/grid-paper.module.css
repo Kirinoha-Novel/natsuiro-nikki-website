@@ -16,6 +16,19 @@
   margin-right: 0.5em;
 }
 
+.ellipsis {
+  margin-right: 0.5em;
+}
+
+.emphasis {
+  font-size: 1.2em;
+}
+
+.blankLine {
+  display: block;
+  width: 1.5em;
+}
+
 .sign {
   width: 200px;
   margin: -100px 0 0 30px;
@@ -70,3 +83,4 @@
     display: none;
   }
 }
+

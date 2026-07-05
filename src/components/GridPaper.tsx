@@ -23,45 +23,50 @@ const GridPaper: FC = () => {
         <p className={styles.pcView}>
           {isMorning.current ? (
             <>
-              「天界でトップの成績を収めたこの私に……
+              「天界でトップの成績を収めたこの私に
+              <span className={styles.ellipsis}>︙︙</span>
               <br />
-              寝坊している大学生を起こせって……？」
+              寝坊している大学生を起こせって
+              <span className={styles.ellipsis}>︙︙</span>？」
             </>
           ) : (
-            <>「……明日も来るから。覚悟しておきなさい」</>
+            <>
+              「<span className={styles.ellipsis}>︙︙</span>
+              明日も来るから。覚悟しておきなさい」
+            </>
           )}
           <br />
+          長い長い夏休みは、一人で過ごすには退屈すぎた。
           <br />
-          長い長い夏休みは、１人で過ごすには退屈すぎた。
-          <br />
-          某TKB大学に通う大学2年生、千ヶ崎蓮は
+          某TKB大学に通う大学二年生、千ヶ崎蓮は
           <br />
           休みをいいことに日々怠惰な生活を送っていた。
           <br />
-          <br />
+          <span className={styles.blankLine}></span>
           そんな時現れたのは<span className={styles.dash}>――</span>
           <br />
+          <span className={styles.blankLine}></span>
+          「起きなさい！天界から来たわ！」
           <br />
-          「起きなさい！天界から来たわ！」 <br />
+          「使命の執行に来たの！」
           <br />
-          「使命の執行に来たの！！」
-          <br />
-          <br />
+          <span className={styles.blankLine}></span>
           天界からやってきた天使、ステラ。
           <br />
           女神様から遣わされた彼女の使命は
           <br />
-          「7日間千ヶ崎蓮を起こすこと」。
+          <span className={styles.dash}>――――</span>
+          &nbsp;
+          <span className={styles.emphasis}>七日間千ヶ崎蓮を起こすこと。</span>
           <br />
-          <br />
-          「起きなさいって言ってるの！！」
+          <span className={styles.blankLine}></span>
+          「起きなさいって言ってるの！」
           <br />
           「任務遂行！片付けるから！」
           <br />
-          <br />
           とびきり世話焼きでちょっとスパルタな
           <br />
-          彼女との7日間をどう過ごすかはあなた次第。
+          彼女との七日間をどう過ごすかはあなた次第。
           <br />
         </p>
         <p className={styles.mobileView}>
