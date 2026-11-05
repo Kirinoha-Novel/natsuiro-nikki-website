@@ -25,6 +25,11 @@ export const infoArray: Info[] = [
 
 export const infoArray: Info[] = [
   {
+    url: "https://www.dlsite.com/maniax/work/=/product_id/RJ01703526.html",
+    date: "2026年8月30日",
+    title: "DLsite での販売を開始",
+  },
+  {
     url: "",
     date: "2026年7月11日",
     title: "製品版情報・キャラクターイラスト公開",
