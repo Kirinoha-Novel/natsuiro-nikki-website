@@ -1,9 +1,4 @@
 .container {
-  background-image:
-    linear-gradient(var(--note-line-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
-  background-size: 2.2rem 2.2rem;
-  background-position: center top;
   display: flex;
 }
 
@@ -29,18 +24,6 @@
   flex-direction: column;
 }
 
-/** subtitle **/
-.subTitle {
-  --side-space: 40px;
-  width: calc(100% - var(--side-space));
-}
-
-.number {
-  font-size: var(--text-base);
-  color: var(--note-line-color);
-  text-align: right;
-}
-
 /** character switch button **/
 .characterSwitchButtonBox {
   display: flex;
@@ -49,18 +32,24 @@
   width: fit-content;
 }
 
-.characterSwitchButton {
+/* round 64px button shared by the character and emotion buttons */
+.characterSwitchButton,
+.emotionButton {
   display: block;
   width: 64px;
   height: 64px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
+}
+
+.characterSwitchButton {
   font-size: var(--text-2xl);
 }
 
-.stellaButton {
-  background-image: url('/normal.webp');
+/* face icon cropped from the standing picture */
+.stellaButton,
+.emotionButton {
   background-position: top;
   background-size: 150%;
   background-repeat: no-repeat;
@@ -131,45 +120,29 @@
 
 .title {
   color: var(--note-font-color);
-}
-
-@media screen and (max-width: 470px) {
-  .title {
-    font-size: var(--text-3xl);
-  }
-}
-
-@media screen and (min-width: 469px) {
-  .title {
-    font-size: var(--text-4xl);
-  }
+  font-size: var(--text-4xl);
 }
 
 .description {
   font-size: var(--text-xl);
 }
 
-@media screen and (min-width: 470px) {
-  .description {
-    font-size: var(--text-xl);
+.phrase {
+  color: var(--note-font-color);
+  font-size: var(--text-2xl);
+}
+
+@media screen and (max-width: 468px) {
+  .title {
+    font-size: var(--text-3xl);
   }
 }
+
 @media screen and (max-width: 469px) {
   .description {
     font-size: var(--text-base);
   }
-}
 
-.phrase {
-  color: var(--note-font-color);
-}
-
-@media screen and (min-width: 470px) {
-  .phrase {
-    font-size: var(--text-2xl);
-  }
-}
-@media screen and (max-width: 469px) {
   .phrase {
     font-size: var(--text-xl);
   }
@@ -213,58 +186,30 @@
   }
 }
 
-.emotionButton {
-  background-position: top;
-  background-size: 150%;
-  background-repeat: no-repeat;
-  display: block;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-}
-
 .inActive {
   background-color: #a8a8a8;
   filter: grayscale(100%);
 }
 
 /* normal */
-.normal {
-  background-image: url('/normal.webp');
-}
-
 .normalActive {
   background-color: #bacce7;
   box-shadow: 0 0 20px #bacce7;
 }
 
 /* grumpy */
-.grumpy {
-  background-image: url('/grumpy.webp');
-}
-
 .grumpyActive {
   background-color: #cfc2e3;
   box-shadow: 0 0 20px #cfc2e3;
 }
 
-/*  ashamed */
-.ashamed {
-  background-image: url('/ashamed.webp');
-}
-
+/* ashamed */
 .ashamedActive {
   background-color: #f6aeba;
   box-shadow: 0 0 20px #f6aeba;
 }
 
 /* smile */
-.smile {
-  background-image: url('/smile.webp');
-}
-
 .smileActive {
   background-color: #fcc4a3;
   box-shadow: 0 0 20px #fcc4a3;

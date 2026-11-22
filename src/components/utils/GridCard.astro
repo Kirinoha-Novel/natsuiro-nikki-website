@@ -1,0 +1,23 @@
+---
+// centered content on a notebook grid page
+---
+
+<div class="grid-paper">
+  <div class="box">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .grid-paper {
+    display: flex;
+    padding: 0 30px;
+  }
+
+  .box {
+    text-align: center;
+    margin: 50px auto;
+    width: 100%;
+    max-width: 800px;
+  }
+</style>

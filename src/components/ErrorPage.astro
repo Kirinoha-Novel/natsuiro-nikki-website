@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  status: number;
+  message: string;
+}
+
+const { status, message } = Astro.props;
+---
+
+<Layout title={String(status)}>
+  <main class="container">
+    <div>
+      <h1>- {status} -</h1>
+      <h2>{message}</h2>
+      <a class="link" href="/">
+        ホームに戻る
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    width: 100%;
+    height: 100lvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: var(--title-font-size);
+    text-align: center;
+    margin: 0 0 10px 0;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    text-align: center;
+    margin: 0 0 64px 0;
+  }
+
+  .link {
+    width: fit-content;
+    padding: 10px 30px;
+    margin: 0 auto;
+    color: #000000;
+    font-size: var(--text-lg);
+    text-align: center;
+    border-radius: 10px;
+    display: block;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    background-color: #c69c6d;
+  }
+</style>

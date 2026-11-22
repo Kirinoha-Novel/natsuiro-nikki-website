@@ -1,7 +1,7 @@
 name: preview
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
 
 on:
@@ -24,7 +24,7 @@ jobs:
       # Build
       - name: Build
         id: build
-        run: nix develop --command bash -c "npm i && npm run build"
+        run: nix develop --command bash -c "npm ci && npm run build"
       # Deploy Preview to Cloudflare Workers
       # Ref: https://zenn.dev/lalalatotoro/articles/b8fa632b53d332
       # Ref: https://zenn.dev/nikomaru/articles/0cea1b1e2fd4f2
@@ -34,7 +34,6 @@ jobs:
         continue-on-error: true
         uses: cloudflare/wrangler-action@v4
         with:
-          wranglerVersion: "4.160.0"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: |
@@ -42,19 +41,20 @@ jobs:
       - name: Create Preview Summary File (Success Pattern)
         id: create-success-summary
         env:
+          BRANCH: ${{ github.ref_name }}
           COMMIT_SHA: ${{ github.sha }}
           COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
           DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url }}
         if: ${{ steps.preview.outcome == 'success' }}
         run: |
           cat << EOF > preview-summary.md
-          # Deploying ${{ github.ref_name }} with 🚀 Cloudflare Workers
+          # Deploying ${BRANCH} with 🚀 Cloudflare Workers
           ---
           <table>
             <tbody>
               <tr>
                 <td>Latest commit:</td>
-                <td>${{ env.COMMIT_SHA }}</td>
+                <td>${COMMIT_SHA}</td>
               </tr>
               <tr>
                 <td>Status:</td>
@@ -62,30 +62,31 @@ jobs:
               </tr>
               <tr>
                 <td>Preview URL:</td>
-                <td><a target="_blank" rel="noopener noreferrer" href="${{ env.DEPLOYMENT_URL }}">${{ env.DEPLOYMENT_URL }}</a></td>
+                <td><a target="_blank" rel="noopener noreferrer" href="${DEPLOYMENT_URL}">${DEPLOYMENT_URL}</a></td>
               </tr>
             </tbody>
           </table>
 
           <details>
             <summary>View logs</summary>
-            ${{ env.COMMAND_OUTPUT }}
+            ${COMMAND_OUTPUT}
           </details>
           EOF
       - name: Create Preview Summary File (Failure Pattern)
         id: create-failed-summary
         env:
+          BRANCH: ${{ github.ref_name }}
           COMMIT_SHA: ${{ github.sha }}
         if: ${{ steps.preview.outcome != 'success' }}
         run: |
           cat << EOF > preview-summary.md
-          # Deploying ${{ github.ref_name }} with 🚀 Cloudflare Workers
+          # Deploying ${BRANCH} with 🚀 Cloudflare Workers
           ---
           <table>
             <tbody>
               <tr>
                 <td>Latest commit:</td>
-                <td>${{ env.COMMIT_SHA }}</td>
+                <td>${COMMIT_SHA}</td>
               </tr>
               <tr>
                 <td>Status:</td>
@@ -99,10 +100,12 @@ jobs:
           </table>
           EOF
       - name: Comment Preview Summary
+        if: ${{ github.event_name == 'pull_request' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          gh pr comment ${{ github.event.pull_request.number }} --body-file preview-summary.md
+          gh pr comment "$PR_NUMBER" --body-file preview-summary.md
       - name: Check Deploy Status
         if: ${{ steps.preview.outcome != 'success' }}
         run: |

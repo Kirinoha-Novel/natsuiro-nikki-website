@@ -1,53 +1,35 @@
 ---
 import { Picture } from 'astro:assets';
-import Title from '../components/utils/Title.astro';
-import SubTitle from './utils/SubTitle.astro';
+import Section from './utils/Section.astro';
+import GridCard from './utils/GridCard.astro';
+import LinkButton from './utils/LinkButton.astro';
 import dlsiteImage from '../assets/dlsite.webp';
 
 const dlsiteUrl = 'https://www.dlsite.com/maniax/work/=/product_id/RJ01703526.html';
 ---
 
-<div class="section">
-  <Title id="product" title="【製品版情報】" />
-  <SubTitle />
-  <div class="grid-paper">
-    <div class="box">
-      <a class="image-link" href={dlsiteUrl} target="_blank" rel="noopener noreferrer">
-        <Picture
-          src={dlsiteImage}
-          class={'dlsite-img'}
-          formats={['webp', 'avif']}
-          fallbackFormat="jpeg"
-          alt="なついろにっき。 DLsite 製品ページ"
-          width={dlsiteImage.width}
-          height={dlsiteImage.height}
-        />
-      </a>
-      <p class="text">
-        <span>「なついろにっき。」は</span><span>DLsiteにて販売中です。</span>
-      </p>
-      <a class="button" href={dlsiteUrl} target="_blank" rel="noopener noreferrer">
-        DLsiteで見る<span class="arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-  </div>
-</div>
+<Section id="product" title="【製品版情報】">
+  <GridCard>
+    <a class="image-link" href={dlsiteUrl} target="_blank" rel="noopener noreferrer">
+      <Picture
+        src={dlsiteImage}
+        class="dlsite-img"
+        formats={['avif', 'webp']}
+        fallbackFormat="jpeg"
+        alt="なついろにっき。 DLsite 製品ページ"
+        width={dlsiteImage.width}
+        height={dlsiteImage.height}
+      />
+    </a>
+    <p class="text">
+      <span>「なついろにっき。」は</span>
+      <span>DLsiteにて販売中です。</span>
+    </p>
+    <LinkButton href={dlsiteUrl}>DLsiteで見る</LinkButton>
+  </GridCard>
+</Section>
 
 <style>
-  .grid-paper {
-    background-image:
-      linear-gradient(var(--note-line-color) 1px, transparent 1px),
-      linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
-    background-size: 2.2rem 2.2rem;
-    background-position: center top;
-    display: flex;
-    padding: 0 30px;
-  }
-  .box {
-    text-align: center;
-    margin: 50px auto;
-  }
-
   .image-link {
     display: inline-block;
     border-radius: 8px;
@@ -57,7 +39,8 @@ const dlsiteUrl = 'https://www.dlsite.com/maniax/work/=/product_id/RJ01703526.ht
       transform 0.2s,
       box-shadow 0.2s;
   }
-  .image-link:hover {
+  .image-link:hover,
+  .image-link:focus-visible {
     transform: translateY(-4px);
     box-shadow: 0 10px 24px rgba(90, 82, 67, 0.35);
   }
@@ -70,69 +53,27 @@ const dlsiteUrl = 'https://www.dlsite.com/maniax/work/=/product_id/RJ01703526.ht
   }
 
   .text {
+    margin: 50px auto 40px auto;
     color: var(--note-font-color);
+    font-size: var(--text-xl);
   }
   .text span {
     display: inline-block;
-  }
-
-  .button {
-    display: inline-block;
-    padding: 14px 48px;
-    border: none;
-    border-radius: 999px;
-    background-color: ButtonFace;
-    color: ButtonText;
-    font-size: var(--text-2xl);
-    text-decoration: none;
-    transition: filter 0.2s;
-  }
-  .button:hover {
-    filter: brightness(0.92);
-  }
-  .arrow {
-    display: inline-block;
-    margin-left: 0.5em;
-    transition: transform 0.2s;
-  }
-  .button:hover .arrow {
-    transform: translateX(4px);
+    background: linear-gradient(transparent 70%, #66c7ff65 0%);
   }
 
   @media screen and (min-width: 700px) {
     .text {
       font-size: var(--text-2xl);
-      margin: 50px auto 40px auto;
-    }
-    .text span {
-      background: linear-gradient(transparent 70%, #66c7ff65 0%);
-    }
-  }
-
-  @media screen and (min-width: 560px) and (max-width: 699px) {
-    .text {
-      font-size: var(--text-xl);
-      margin: 50px auto 40px auto;
-    }
-    .text span {
-      background: linear-gradient(transparent 70%, #66c7ff65 0%);
-    }
-    .button {
-      font-size: var(--text-xl);
     }
   }
 
   @media screen and (max-width: 559px) {
     .text {
-      font-size: var(--text-xl);
       margin: 30px auto 20px auto;
     }
     .text span {
       background: linear-gradient(transparent 75%, #66c7ff65 0%);
-    }
-    .button {
-      padding: 12px 36px;
-      font-size: var(--text-xl);
     }
   }
 </style>

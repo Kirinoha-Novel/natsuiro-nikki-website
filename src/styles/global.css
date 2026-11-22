@@ -9,6 +9,11 @@ body {
   --background-color: #fffbf2;
 
   --title-font-color: #8c7851;
+
+  --accent-blue: #ddeefd;
+  --accent-blue-hover: #d0e6fc;
+  --accent-lavender: #ede6ff;
+  --menu-color: #858ed6;
   --title-font-size: clamp(2rem, 6cqw, 2.6rem);
 
   --text-xs: calc(1rem * 8 / 10);
@@ -21,6 +26,29 @@ body {
   --text-4xl: calc(1rem * 8 / 3);
   --text-5xl: calc(1rem * 8 / 2);
   --text-6xl: calc(1rem * 8 / 1);
+}
+
+/* notebook grid shared by every section */
+.grid-paper {
+  background-image:
+    linear-gradient(var(--note-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
+  background-size: 2.2rem 2.2rem;
+  background-position: center top;
+}
+
+/* decorative "No." line at the top-right of a notebook page */
+.note-number {
+  width: calc(100% - 40px);
+}
+
+/* drawn by CSS so it stays a pure decoration */
+.note-number::before {
+  content: 'No.';
+  display: block;
+  font-size: var(--text-base);
+  color: var(--note-line-color);
+  text-align: right;
 }
 
 @media screen and (max-width: 935px) {
@@ -41,6 +69,27 @@ body {
   font-family: 'Zen Kurenaido', sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+/* hidden from view but still read by screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* honor the OS setting to cut down on motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 *::selection {

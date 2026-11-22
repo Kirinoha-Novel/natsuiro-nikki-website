@@ -1,0 +1,25 @@
+---
+import Title from './Title.astro';
+import SubTitle from './SubTitle.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  /** show the "No." line under the title; otherwise leave a plain gap */
+  numbered?: boolean;
+}
+
+const { id, title, numbered = true } = Astro.props;
+---
+
+<section class="section" aria-labelledby={id}>
+  <Title id={id} title={title} />
+  {numbered ? <SubTitle /> : <div class="space" />}
+  <slot />
+</section>
+
+<style>
+  .space {
+    height: 24px;
+  }
+</style>

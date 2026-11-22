@@ -1,10 +1,5 @@
 .gridPaper {
   padding: 60px 0 170px 0;
-  background-image:
-    linear-gradient(var(--note-line-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
-  background-size: 2.2rem 2.2rem;
-  background-position: center top;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +7,6 @@
 
 .dash {
   letter-spacing: -0.2em;
-  width: 2em;
   margin-right: 0.5em;
 }
 
@@ -35,9 +29,9 @@
 }
 
 .signImg {
+  display: block;
   width: 100%;
-  height: fit-content;
-  object-fit: contain;
+  height: auto;
 }
 
 /* PC Version */
@@ -88,4 +82,3 @@
     display: none;
   }
 }
-

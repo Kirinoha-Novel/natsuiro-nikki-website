@@ -1,5 +1,16 @@
 ---
 import '../styles/global.css';
+
+interface Props {
+  /** page name shown before the site name in the tab */
+  title?: string;
+}
+
+const { title } = Astro.props;
+
+const siteName = 'なついろにっき。';
+const description = '「なついろにっき。」のティザーサイトです。';
+const ogImageUrl = new URL('/og-image.webp', Astro.site);
 ---
 
 <!doctype html>
@@ -8,49 +19,29 @@ import '../styles/global.css';
     <!-- meta settings start -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="description" content="「なついろにっき。」のティザーサイトです。" />
+    <meta name="description" content={description} />
     <meta
-      name="keyword"
+      name="keywords"
       content="なついろにっき。 なついろにっき natsuiro natsuiro-nikki 'natsuiro nikki' きりのはのべる Kirinoha-Novel kirinoha-novel 'kirinoha novel'"
     />
     <meta name="theme-color" content="rgb(255, 251, 242)" />
     <!-- meta settings end -->
     <!-- icon settings start -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-nikki-website/refs/heads/main/public/favicon-96x96.png"
-      sizes="96x96"
-    />
-    <link
-      rel="icon"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-nikki-website/refs/heads/main/public/favicon.ico"
-      type="image/vnd.microsoft.icon"
-      sizes="any"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-nikki-website/refs/heads/main/public/apple-touch-icon.png"
-    />
-    <link
-      rel="manifest"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-nikki-website/refs/heads/main/public/manifest.json"
-    />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <!-- icon settings end -->
     <!-- OG setting start -->
     <meta property="og:locale" content="ja_JP" />
-    <meta property="og:site_name" content="なついろにっき。" />
-    <meta property="og:title" content="なついろにっき。" />
-    <meta property="og:description" content="「なついろにっき。」のティザーサイトです。" />
-    <meta
-      property="og:image"
-      content="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-nikki-website/refs/heads/main/public/og-image.webp"
-    />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={siteName} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1080" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://natsuiro.kirinohanovel.com" />
+    <meta property="og:url" content={Astro.site} />
     <!-- OG setting end -->
     <!-- Twitter card settings start -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -62,7 +53,7 @@ import '../styles/global.css';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet" />
     <!-- Google fonts end -->
-    <title>なついろにっき。</title>
+    <title>{title ? `${title} | ${siteName}` : siteName}</title>
   </head>
   <body>
     <slot />

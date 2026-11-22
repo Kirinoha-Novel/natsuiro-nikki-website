@@ -1,12 +1,32 @@
 ---
+import type { Info } from '../../news';
+
+type Props = Info;
+
 const { url, date, title } = Astro.props;
+
+// "2026年8月30日" -> "2026-08-30" for the machine-readable <time>
+const [, year, month, day] = date.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日$/) ?? [];
+if (!year) throw new Error(`news date must look like 2026年8月30日: ${date}`);
+const datetime = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
 ---
 
 <li>
-  <a href={url} target="_blank" rel="noopener noreferrer">
-    <span class="date">{date}</span>
-    <span class="title">{title}</span>
-  </a>
+  {url ? (
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      <time class="date" datetime={datetime}>
+        {date}
+      </time>{' '}
+      <span class="title">{title}</span>
+    </a>
+  ) : (
+    <span>
+      <time class="date" datetime={datetime}>
+        {date}
+      </time>{' '}
+      <span class="title">{title}</span>
+    </span>
+  )}
 </li>
 
 <style>
@@ -18,29 +38,25 @@ const { url, date, title } = Astro.props;
 
   li {
     padding: 20px 30px 0 30px;
+    color: var(--note-font-color);
     border-bottom: 1px solid var(--note-font-color);
   }
 
-  span {
+  span,
+  time {
     display: inline-block;
   }
 
   .date {
     margin: 0 20px 0 0;
+    font-size: var(--text-lg);
   }
 
-  @media screen and (min-width: 470px) {
-    .date {
-      font-size: var(--text-lg);
-    }
-    .title {
-      font-size: var(--text-xl);
-    }
+  .title {
+    font-size: var(--text-xl);
   }
+
   @media screen and (max-width: 469px) {
-    .date {
-      font-size: var(--text-lg);
-    }
     .title {
       font-size: var(--text-lg);
     }

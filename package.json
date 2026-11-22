@@ -2,39 +2,47 @@
   "name": "natsuiro-nikki-website",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "astro build && npx wrangler@latest deploy",
+    "deploy": "astro build && wrangler deploy",
     "test": "astro check",
-    "fmt": "npx prettier . --write",
+    "fmt": "prettier . --write",
     "lint": "eslint \"src/**/*.{ts,tsx,astro}\"",
     "lint:fix": "eslint --fix \"src/**/*.{ts,tsx,astro}\"",
     "astro": "astro",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.6.0",
-    "@types/js-cookie": "^3.0.6",
-    "astro": "^5.16.6",
-    "js-cookie": "^3.0.5",
-    "typescript": "^5.9.2",
-    "wrangler": "^4.33.1"
+    "@astrojs/react": "^7.1.9",
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13",
+    "js-cookie": "^3.0.8",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "eslint": "^9.29.0",
-    "eslint-config-flat-gitignore": "^2.1.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "globals": "^17.0.0",
-    "husky": "^9.0.0",
-    "lint-staged": "^17.0.0",
-    "prettier": "3.9.10",
-    "prettier-plugin-astro": "0.14.1",
-    "typescript-eslint": "^8.35.0"
+    "@astrojs/check": "^0.9.12",
+    "@eslint/js": "^10.0.1",
+    "@types/js-cookie": "^3.0.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^10.15.0",
+    "eslint-config-flat-gitignore": "^2.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^3.2.1",
+    "eslint-plugin-jsx-a11y-x": "^0.2.0",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.2",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.73.0",
+    "wrangler": "^4.166.0"
   }
 }
