@@ -1,11 +1,16 @@
 ---
+interface Props {
+  id: string;
+  title: string;
+}
+
 const { title, id } = Astro.props;
 ---
 
-<h1 id={id}>{title}</h1>
+<h2 id={id}>{title}</h2>
 
 <style>
-  h1 {
+  h2 {
     display: block;
     text-align: center;
     font-size: var(--title-font-size);

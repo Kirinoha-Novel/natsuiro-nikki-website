@@ -1,0 +1,22 @@
+<!-- covers the page until every resource has loaded -->
+<div class="load-overlay" hidden></div>
+
+<style>
+  .load-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--background-color);
+    z-index: 10;
+  }
+</style>
+
+<!-- runs in place so the page is covered before it paints; without JavaScript it never shows -->
+<script is:inline>
+  {
+    const overlay = document.querySelector('.load-overlay');
+    overlay.hidden = false;
+    window.addEventListener('load', () => {
+      overlay.hidden = true;
+    });
+  }
+</script>

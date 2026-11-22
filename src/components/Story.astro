@@ -1,11 +1,8 @@
 ---
-import Title from '../components/utils/Title.astro';
-import SubTitle from './utils/SubTitle.astro';
-import { GridPaper } from '../components/GridPaper.tsx';
+import Section from './utils/Section.astro';
+import { StoryBody } from './StoryBody';
 ---
 
-<div class="section">
-  <Title id="summary" title="【あらすじ】" />
-  <SubTitle />
-  <GridPaper client:load />
-</div>
+<Section id="summary" title="【あらすじ】">
+  <StoryBody client:load />
+</Section>

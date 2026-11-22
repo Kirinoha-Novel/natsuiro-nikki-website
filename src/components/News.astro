@@ -1,29 +1,23 @@
 ---
-import Title from '../components/utils/Title.astro';
-import SubTitle from './utils/SubTitle.astro';
-import NewsLi from '../components/utils/NewsLi.astro';
+import Section from './utils/Section.astro';
+import NewsLi from './utils/NewsLi.astro';
 import { infoArray } from '../news';
 ---
 
-<div class="section">
-  <Title id="info" title="【お知らせ】" />
-  <SubTitle />
+<Section id="info" title="【お知らせ】">
   <div class="grid-paper">
     <ul>
-      {infoArray.map((info) => <NewsLi url={info.url} date={info.date} title={info.title} />)}
+      {infoArray.map((info) => (
+        <NewsLi {...info} />
+      ))}
     </ul>
   </div>
-</div>
+</Section>
 
 <style>
   .grid-paper {
     height: 200px;
     padding: 30px 10px;
-    background-image:
-      linear-gradient(var(--note-line-color) 1px, transparent 1px),
-      linear-gradient(90deg, var(--note-line-color) 1px, transparent 1px);
-    background-size: 2.2rem 2.2rem;
-    background-position: center top;
     display: flex;
     align-items: center;
     justify-content: center;

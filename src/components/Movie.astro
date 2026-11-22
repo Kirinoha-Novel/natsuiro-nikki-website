@@ -1,26 +1,23 @@
 ---
-import Title from '../components/utils/Title.astro';
+import Section from './utils/Section.astro';
 ---
 
-<div class="section">
-  <Title id="video" title="【動画】" />
-  <div class="space"></div>
+<Section id="video" title="【動画】" numbered={false}>
   <div class="movie">
     <iframe
       width="560"
       height="315"
-      src="https://www.youtube.com/embed/z08k__1jYL4?si=DHEYlyVTYKm79MlS"
-      title="YouTube video player"
+      src="https://www.youtube-nocookie.com/embed/z08k__1jYL4"
+      title="なついろにっき。 紹介動画"
+      loading="lazy"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen></iframe>
+      allowfullscreen
+    ></iframe>
   </div>
-</div>
+</Section>
 
 <style>
-  .space {
-    height: 24px;
-  }
   .movie {
     aspect-ratio: 16 / 9;
   }

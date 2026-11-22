@@ -1,16 +1,32 @@
 ---
-import Title from '../components/utils/Title.astro';
-import { CharacterSwitch } from '../components/CharacterSwitch';
+import { getImage } from 'astro:assets';
+import Section from './utils/Section.astro';
+import { CharacterSwitch, type EmotionImages, type EmotionType } from './CharacterSwitch';
+import normal from '../assets/stella/normal.webp';
+import grumpy from '../assets/stella/grumpy.webp';
+import ashamed from '../assets/stella/ashamed.webp';
+import smile from '../assets/stella/smile.webp';
+
+const sources: Record<EmotionType, ImageMetadata> = { normal, grumpy, ashamed, smile };
+
+// standing picture: 320px wide on PC, up to 250px on mobile (x2 / x3 for dense screens)
+const PORTRAIT_WIDTHS = [250, 320, 500, 640, 700];
+// face icon: 64px round button showing the picture at 150% (96px, x3)
+const FACE_WIDTH = 288;
+
+const entries = await Promise.all(
+  (Object.entries(sources) as [EmotionType, ImageMetadata][]).map(async ([type, src]) => {
+    const [portrait, face] = await Promise.all([
+      getImage({ src, format: 'webp', widths: PORTRAIT_WIDTHS.filter((width) => width <= src.width) }),
+      getImage({ src, format: 'webp', width: FACE_WIDTH }),
+    ]);
+    const { width, height } = src;
+    return [type, { src: portrait.src, srcSet: portrait.srcSet.attribute, width, height, face: face.src }] as const;
+  })
+);
+const images = Object.fromEntries(entries) as EmotionImages;
 ---
 
-<div class="section">
-  <Title id="character" title="【登場人物】" />
-  <div class="space"></div>
-  <CharacterSwitch client:load />
-</div>
-
-<style>
-  .space {
-    height: 24px;
-  }
-</style>
+<Section id="character" title="【登場人物】" numbered={false}>
+  <CharacterSwitch client:load images={images} />
+</Section>

@@ -1,0 +1,28 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div>
+    <p class="text">&copy; {year} きりのはのべる.</p>
+    <p class="text">Created by Yuki Osada (Myxogastria0808).</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    margin: 250px 0 0 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3eede;
+  }
+
+  .text {
+    color: var(--note-font-color);
+    font-size: var(--text-base);
+    text-align: center;
+  }
+</style>

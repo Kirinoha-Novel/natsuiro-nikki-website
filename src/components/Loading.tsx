@@ -8,42 +8,35 @@ const Loading: FC = () => {
   const [fadeOut, setFadeOut] = useState<boolean>(false);
 
   useEffect(() => {
-    const isVisited = Cookies.get('visited');
+    if (Cookies.get('visited')) return;
 
     const time = 2000;
 
-    if (!isVisited) {
-      // show loading screen
-      setShowLoading(true);
-      // show text
-      setShowText(true);
+    // show loading screen and text
+    setShowLoading(true);
+    setShowText(true);
 
-      // set a cookie to indicate the user has visited
-      Cookies.set('visited', 'true', { expires: 1, path: '/' });
+    // set a cookie to indicate the user has visited
+    Cookies.set('visited', 'true', { expires: 1, path: '/', sameSite: 'lax' });
 
-      // show loading for 2 seconds
-      setTimeout(() => {
-        setShowLoading(false);
-      }, time);
-      // start fade out after 1.8 second
-      setTimeout(() => {
-        setFadeOut(true);
-      }, time - 200);
+    const timers = [
       // hide text after 1.78 seconds
-      setTimeout(() => {
-        setShowText(false);
-      }, time - 220);
-    }
+      setTimeout(() => setShowText(false), time - 220),
+      // start fade out after 1.8 seconds
+      setTimeout(() => setFadeOut(true), time - 200),
+      // hide loading after 2 seconds
+      setTimeout(() => setShowLoading(false), time),
+    ];
+
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   return (
-    <>
-      {showLoading && (
-        <div className={`${styles.overlay} ${fadeOut ? styles.fadeOut : ''}`}>
-          {showText && <p className={styles.title}>少女と過ごす、少し不思議な夏休み</p>}
-        </div>
-      )}
-    </>
+    showLoading && (
+      <div className={`${styles.overlay} ${fadeOut ? styles.fadeOut : ''}`}>
+        {showText && <p className={styles.title}>少女と過ごす、少し不思議な夏休み</p>}
+      </div>
+    )
   );
 };
 

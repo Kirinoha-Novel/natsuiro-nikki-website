@@ -1,155 +1,149 @@
 ---
-import { Picture } from 'astro:assets';
+import { Picture, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import mobileImage from '../assets/mobile.webp';
 import pcImage from '../assets/pc.webp';
 import logoImage from '../assets/logo.webp';
+
+// landscape screens get the PC key visual, portrait screens the mobile one
+const LANDSCAPE = '(min-aspect-ratio: 1/1)';
+const FORMATS = ['avif', 'webp'] as const;
+const WIDTHS = [640, 750, 828, 1080, 1280, 1668, 2048, 2560];
+
+const buildSources = (image: ImageMetadata) =>
+  Promise.all(
+    FORMATS.map(async (format) => {
+      const widths = WIDTHS.filter((width) => width <= image.width);
+      const { srcSet } = await getImage({ src: image, format, widths });
+      return { type: `image/${format}`, srcset: srcSet.attribute };
+    })
+  );
+
+const [pcSources, mobileSources] = await Promise.all([buildSources(pcImage), buildSources(mobileImage)]);
+const fallback = await getImage({ src: mobileImage, format: 'jpeg', width: 1080 });
 ---
 
-<div class="first-view-container">
-  <div class="key-visual-container">
-    <!-- PC Version -->
-    <div class="key-visual-pc">
-      <Picture
-        src={pcImage}
-        formats={['webp', 'avif']}
-        fallbackFormat="jpeg"
-        alt="Key Visual"
-        layout="full-width"
-        width={pcImage.width}
-        height={pcImage.height}
-        priority
-      />
-      <div class="logo">
-        <Picture
-          src={logoImage}
-          formats={['webp', 'avif']}
-          fallbackFormat="jpeg"
-          alt="Key Visual"
-          layout="full-width"
-          width={logoImage.width}
-          height={logoImage.height}
-          priority
-        />
-      </div>
-      <div class="blur-box"></div>
-    </div>
-    <!-- Mobile Version -->
-    <div class="key-visual-mobile">
-      <Picture
-        src={mobileImage}
-        class={'key-visual-mobile-img'}
-        formats={['webp', 'avif']}
-        fallbackFormat="jpeg"
-        alt="Key Visual"
-        layout="full-width"
-        width={mobileImage.width}
-        height={mobileImage.height}
-        priority
-      />
-      <div class="logo">
-        <Picture
-          src={logoImage}
-          formats={['webp', 'avif']}
-          fallbackFormat="jpeg"
-          alt="Key Visual"
-          layout="full-width"
-          width={logoImage.width}
-          height={logoImage.height}
-          priority
-        />
-      </div>
-    </div>
+<header class="key-visual-container" style={`--pc-aspect-ratio: ${pcImage.width} / ${pcImage.height}`}>
+  <h1 class="visually-hidden">なついろにっき。</h1>
+  <picture>
+    {pcSources.map(({ type, srcset }) => (
+      <source media={LANDSCAPE} type={type} srcset={srcset} sizes="100vw" />
+    ))}
+    {mobileSources.map(({ type, srcset }) => (
+      <source type={type} srcset={srcset} sizes="100vw" />
+    ))}
+    <img
+      class="key-visual"
+      src={fallback.src}
+      alt="なついろにっき。 キービジュアル"
+      width={mobileImage.width}
+      height={mobileImage.height}
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
+  <div class="logo">
+    <Picture
+      src={logoImage}
+      formats={['avif', 'webp']}
+      fallbackFormat="jpeg"
+      alt="なついろにっき。 ロゴ"
+      layout="full-width"
+      sizes="(min-aspect-ratio: 1/1) 60vw, 100vw"
+      width={logoImage.width}
+      height={logoImage.height}
+      priority
+    />
   </div>
-</div>
+  <div class="blur-box"></div>
+</header>
 
 <style>
   .key-visual-container {
+    position: relative;
     height: 100lvh;
     display: flex;
     align-items: flex-start;
     overflow: hidden;
   }
 
-  /* PC Version */
-  .key-visual-pc .logo {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    z-index: 2;
+  picture {
+    display: contents;
   }
 
-  /* Logo Image Control */
-  @media screen and (max-width: 1200px) {
-    .key-visual-pc .logo {
-      width: 60vw;
-    }
-  }
-  @media screen and (max-width: 1400px) and (min-width: 1201px) {
-    .key-visual-pc .logo {
-      width: 55vw;
-    }
-  }
-  @media screen and (min-width: 1401px) {
-    .key-visual-pc .logo {
-      width: 50vw;
-    }
-  }
-
-  .key-visual-pc .blur-box {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  .key-visual {
+    display: block;
     width: 100%;
-    height: 300px;
-    background: linear-gradient(to bottom, rgba(255, 251, 242, 0) 0%, rgba(255, 251, 242, 1) 100%);
-    z-index: 1;
-  }
-
-  /* Mobile Version */
-  .key-visual-mobile .key-visual-mobile-img {
-    min-height: 100lvh;
+    height: auto;
     object-fit: cover;
   }
 
-  .key-visual-mobile .logo {
+  .logo {
     position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     z-index: 2;
-    width: 100%;
   }
 
-  /* Logo Image Control */
-  @media screen and (max-width: 700px) {
-    .key-visual-mobile .logo {
-      width: 100%;
-    }
+  .blur-box {
+    display: none;
   }
-  @media screen and (max-width: 930px) and (min-width: 701px) {
-    .key-visual-mobile .logo {
-      width: 80%;
+
+  /* Mobile Version */
+  @media screen and (max-aspect-ratio: 1/1) {
+    .key-visual {
+      min-height: 100lvh;
     }
-  }
-  @media screen and (min-width: 931px) {
-    .key-visual-mobile .logo {
+
+    .logo {
+      top: 75%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 65%;
     }
   }
-
-  /* First View Image Control */
-  @media screen and (max-aspect-ratio: 1/1) {
-    .key-visual-pc {
-      display: none;
+  @media screen and (max-aspect-ratio: 1/1) and (max-width: 930px) {
+    .logo {
+      width: 80%;
     }
   }
+  @media screen and (max-aspect-ratio: 1/1) and (max-width: 700px) {
+    .logo {
+      width: 100%;
+    }
+  }
+
+  /* PC Version */
   @media screen and (min-aspect-ratio: 1/1) {
-    .key-visual-mobile {
-      display: none;
+    .key-visual {
+      /* the img's width/height attributes describe the mobile image */
+      aspect-ratio: var(--pc-aspect-ratio);
+    }
+
+    .logo {
+      bottom: 20px;
+      left: 20px;
+      width: 50vw;
+    }
+
+    .blur-box {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(to bottom, rgba(255, 251, 242, 0) 0%, rgba(255, 251, 242, 1) 100%);
+      z-index: 1;
+    }
+  }
+  @media screen and (min-aspect-ratio: 1/1) and (max-width: 1400px) {
+    .logo {
+      width: 55vw;
+    }
+  }
+  @media screen and (min-aspect-ratio: 1/1) and (max-width: 1200px) {
+    .logo {
+      width: 60vw;
     }
   }
 </style>
