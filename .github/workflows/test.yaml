@@ -19,9 +19,13 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixpkgs-unstable
+      - name: Install Dependencies
+        run: nix develop --command npm ci
+      - name: Format Verification
+        run: nix develop --command npx prettier . --check
       - name: ESLint Verification
-        run: nix develop --command bash -c "npm i && npm run lint"
+        run: nix develop --command npm run lint
       - name: Test Verification
-        run: nix develop --command bash -c "npm i && npm run test"
+        run: nix develop --command npm run test
       - name: Build Verification
-        run: nix develop --command bash -c "npm i && npm run build"
+        run: nix develop --command npm run build

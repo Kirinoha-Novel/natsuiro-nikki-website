@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # nix direnv
 .direnv/
+
+# wrangler local state
+.wrangler/

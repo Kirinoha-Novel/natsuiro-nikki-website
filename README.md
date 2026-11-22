@@ -8,7 +8,7 @@
 
 以下がインストールされていることを確認してください。
 
-- Node.js
+- Node.js 22.23.4 以上（Astro 7 の要件。`nix develop` を使うと揃います）
 - npm
 - git
 
@@ -26,14 +26,14 @@ Visual Studio Codeを使用している場合は、以下の拡張機能をイ�
 1. レポジトリをcloneして、レポジトリのディレクトリに移動
 
 ```sh
-git clone https://github.com/tsukuba-GSK-bishoge/natsuiro-website.git
-cd natsuiro-website
+git clone https://github.com/Kirinoha-Novel/natsuiro-nikki-website.git
+cd natsuiro-nikki-website
 ```
 
 2. 以下のコマンドをレポジトリのルートで実行
 
 ```sh
-npm i && npm exec husky-init -y &&  npm exec husky set .husky/pre-commit "npm exec lint-staged"
+npm ci && echo "npx lint-staged" > .husky/pre-commit
 ```
 
 ## 開発サーバーの起動
@@ -41,7 +41,6 @@ npm i && npm exec husky-init -y &&  npm exec husky set .husky/pre-commit "npm ex
 ```sh
 npm run dev
 ```
-
 
 ## ビルドとビルドのプレビュー
 
@@ -60,63 +59,15 @@ npm run preview
 
 ```ts
   {
-    url: "News内容に関連したURLをここに記述してください。",
-    date: "日付を YYYY年MM月DD日の形式で記述してください。",
-    title: "Newsのタイトルをここに記述してください。",
+    url: 'News内容に関連したURLをここに記述してください。（リンク先がない場合は省略できます）',
+    date: '日付を YYYY年MM月DD日の形式で記述してください。',
+    title: 'Newsのタイトルをここに記述してください。',
   },
 ```
-
 
 Newsは、`infoArray`配列の最上部が最新のNewsとして表示されます。
 
 そのため、追加するNewsを配列の最上部に追加してください。
-
-以下は、`src/news.ts`の内容の例です。
-
-```ts
-type Info = {
-  url: string;
-  date: string;
-  title: string;
-};
-
-//* News Information *//
-/*
-export const infoArray: Info[] = [
-  # small index (New Information)
-  {
-    url: 'https://x.com/kirinohanovel/status/1962108105124360515',
-    date: '2025年8月31日',
-    title: 'ティザーサイト公開',
-  },
-  ...
-  # large index (Old Information)
-  {
-    url: 'https://x.com/kirinohanovel/status/1959571641484128619',
-    date: '2025年8月24日',
-    title: 'なついろにっき。のキービジュアル公開',
-  },
-]
-*/
-
-export const infoArray: Info[] = [
-  {
-    url: 'https://x.com/kirinohanovel/status/1962108105124360515',
-    date: '2025年8月31日',
-    title: 'ティザーサイト公開',
-  },
-  {
-    url: 'https://x.com/kirinohanovel/status/1962108103618633751',
-    date: '2025年8月31日',
-    title: '公式YouTubeチャンネル開設',
-  },
-  {
-    url: 'https://x.com/kirinohanovel/status/1959571641484128619',
-    date: '2025年8月24日',
-    title: 'なついろにっき。のキービジュアル公開',
-  },
-];
-```
 
 ## References
 
